@@ -47,4 +47,6 @@ External Tools and Assets
 	- Standard Assets
 		- Scripts
 			+ Camera2DFollow. Always a good tool for cameras!
+	- Sprites
+		+ All of them. Stolen. From Crypt of the Necrodancer.
 

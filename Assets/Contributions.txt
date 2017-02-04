@@ -12,12 +12,15 @@
 Clark Chambers
 ======================
 - Assets
-	-Prefabs
+	- Prefabs
 		+ Level 1
 			(Implementation, including collision and art-ripping)
-	-Scenes
+	- Scenes
 		+ Level 1
 			(Level implementation and collision checking)
+	- Scripts
+		+ GridMovement.cs
+		+ PlayerController.cs
 
 
 TJ Couch
@@ -30,3 +33,18 @@ TJ Couch
 
 Molly Scumer
 =======================
+- Assets
+
+
+External Tools and Assets
+=======================
+- Tiled2Unity
+	- Used to import a TMX tilemap from Tiled into Unity.
+	  Automaps the collision with object rules on the Tiled
+	  editor
+
+- Assets
+	- Standard Assets
+		- Scripts
+			+ Camera2DFollow. Always a good tool for cameras!
+

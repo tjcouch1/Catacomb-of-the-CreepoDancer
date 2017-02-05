@@ -5,41 +5,56 @@ using UnityEngine;
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
 
+	public GameObject updater;
 	GridMovement gm;
+	SimultaneousUpdater smu;
 
 	// Use this for initialization
 	void Awake () {
 		gm = GetComponent<GridMovement>();
+		smu = updater.GetComponent<SimultaneousUpdater>();
+	}
+
+	void Start() 
+	{
+		if(smu == null) {
+			Debug.Log("Updater Isn't configured correctly.");
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		GridMovement.Directions dir = GridMovement.Directions.NULL;
+
 		// Rightwards Movement
 		if(Input.GetKeyDown(KeyCode.RightArrow)){
-			if(gm.CanMove(GridMovement.Directions.RIGHT)){
-				transform.position += new Vector3(1f, 0f, 0f);
-			}
+			dir = GridMovement.Directions.RIGHT;
 		}
 
 		// Leftwards Movement
-		if(Input.GetKeyDown(KeyCode.LeftArrow)){
-			if(gm.CanMove(GridMovement.Directions.LEFT)){
-				transform.position += new Vector3(-1f, 0f, 0f);
-			}
+		else if(Input.GetKeyDown(KeyCode.LeftArrow)){
+			dir = GridMovement.Directions.LEFT;
 		}
 
 		// Upwards Movement
-		if(Input.GetKeyDown(KeyCode.UpArrow)){
-			if(gm.CanMove(GridMovement.Directions.UP)){
-				transform.position += new Vector3(0f, 1f, 0f);
-			}
+		else if(Input.GetKeyDown(KeyCode.UpArrow)){
+			dir = GridMovement.Directions.UP;
 		}
 
 		// Downwards Movement
-		if(Input.GetKeyDown(KeyCode.DownArrow)){
-			if(gm.CanMove(GridMovement.Directions.DOWN)){
-				transform.position += new Vector3(0f, -1f, 0f);
+		else if(Input.GetKeyDown(KeyCode.DownArrow)){
+			dir = GridMovement.Directions.DOWN;
+		}
+
+		if(dir != GridMovement.Directions.NULL) {
+
+			// Fire off a world update
+			smu.UpdateWorld();
+
+			// Check for movement
+			if(gm.CanMove(dir)) {
+				transform.position += (Vector3)GridMovement.DirTable[dir];
 			}
 		}
 	}

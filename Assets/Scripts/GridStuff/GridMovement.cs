@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour {
 
-	public enum Directions {
+	public enum Directions 
+	{
+		NULL,
 		UP,
 		DOWN,
 		RIGHT,
 		LEFT
 	}
 
-	public static Dictionary<Directions, Vector2> DirTable = new Dictionary<Directions, Vector2> {
+	public static Dictionary<Directions, Vector2> DirTable = new Dictionary<Directions, Vector2> 
+	{
 		{Directions.UP, Vector2.up},
 		{Directions.DOWN, -Vector2.up},
 		{Directions.RIGHT, Vector2.right},
@@ -19,7 +22,11 @@ public class GridMovement : MonoBehaviour {
 	};
 
 	
-	public bool CanMove(Directions dir) {
+	public bool CanMove(Directions dir) 
+	{
+		if(dir == Directions.NULL) {
+			return false;
+		}
 		// Shoot out a ray to check for a collision with the level layer. 
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
 											 DirTable[dir], 				// Lookup table (direction)!

@@ -16,11 +16,18 @@ public class EnemyComponent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		health = maxHealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Hit(int dmg) {
+		health -= dmg;
+		if(health <= 0) {
+			Destroy(gameObject);
+		}
 	}
 }

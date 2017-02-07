@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Dirs = GridMovement.Directions;
+
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
+
 
 	public GameObject updater;
 	GridMovement gm;
@@ -25,29 +28,29 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		GridMovement.Directions dir = GridMovement.Directions.NULL;
+		Dirs dir = Dirs.NULL;
 
 		// Rightwards Movement
 		if(Input.GetKeyDown(KeyCode.RightArrow)){
-			dir = GridMovement.Directions.RIGHT;
+			dir = Dirs.RIGHT;
 		}
 
 		// Leftwards Movement
 		else if(Input.GetKeyDown(KeyCode.LeftArrow)){
-			dir = GridMovement.Directions.LEFT;
+			dir = Dirs.LEFT;
 		}
 
 		// Upwards Movement
 		else if(Input.GetKeyDown(KeyCode.UpArrow)){
-			dir = GridMovement.Directions.UP;
+			dir = Dirs.UP;
 		}
 
 		// Downwards Movement
 		else if(Input.GetKeyDown(KeyCode.DownArrow)){
-			dir = GridMovement.Directions.DOWN;
+			dir = Dirs.DOWN;
 		}
 
-		if(dir != GridMovement.Directions.NULL) {
+		if(dir != Dirs.NULL) {
 
 			// Fire off a world update
 			smu.UpdateWorld();

@@ -40,13 +40,16 @@ public class PlayerController : MonoBehaviour {
 
 
 		// TEST CODE
+		// if(Input.GetKeyDown(KeyCode.D)) {
+		// 	Debug.Log("Equipped dagger!");
+		// 	SetWeapon<DaggerWeapon>();
+		// }
+		// if(Input.GetKeyDown(KeyCode.S)) {
+		// 	Debug.Log("Equipped Longsword!");
+		// 	SetWeapon<LongswordWeapon>();
+		// }
 		if(Input.GetKeyDown(KeyCode.D)) {
-			Debug.Log("Equipped dagger!");
-			SetWeapon<DaggerWeapon>();
-		}
-		if(Input.GetKeyDown(KeyCode.S)) {
-			Debug.Log("Equipped Longsword!");
-			SetWeapon<LongswordWeapon>();
+			GetComponent<PlayerHealthController>().DealDamage(1);
 		}
 
 		// Rightwards Movement

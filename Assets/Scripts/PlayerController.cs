@@ -38,6 +38,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		Dirs dir = Dirs.NULL;
 
+
+		// TEST CODE
+		if(Input.GetKeyDown(KeyCode.D)) {
+			Debug.Log("Equipped dagger!");
+			SetWeapon<DaggerWeapon>();
+		}
+		if(Input.GetKeyDown(KeyCode.S)) {
+			Debug.Log("Equipped Longsword!");
+			SetWeapon<LongswordWeapon>();
+		}
+
 		// Rightwards Movement
 		if(Input.GetKeyDown(KeyCode.RightArrow)){
 			dir = Dirs.RIGHT;

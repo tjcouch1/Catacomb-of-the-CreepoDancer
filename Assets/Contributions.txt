@@ -21,9 +21,11 @@ Clark Chambers
 	- Scripts
 		+ GridMovement.cs
 		+ PlayerController.cs
-		+ GridEnemyState
-		+ GridUpdateSubscriber
-		+ SimultaneousUpdater
+		+ GridEnemyState.cs
+		+ GridUpdateSubscriber.cs
+		+ SimultaneousUpdater.cs
+		+ CoinMultiplier.cs
+		+ WorldTimer.cs
 
 
 TJ Couch

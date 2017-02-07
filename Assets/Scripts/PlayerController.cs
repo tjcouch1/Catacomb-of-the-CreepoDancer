@@ -7,15 +7,23 @@ using Dirs = GridMovement.Directions;
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
 
-
+	// Gamd updater
 	public GameObject updater;
+	// Utility GridMovement component
 	GridMovement gm;
+	// World simultaneous updater
 	SimultaneousUpdater smu;
+	// World timer
+	WorldTimer wt;
+	// Current weapon equipped to the player. Should be added as a component. 
+	AbstractWeapon weapon;
 
 	// Use this for initialization
 	void Awake () {
 		gm = GetComponent<GridMovement>();
 		smu = updater.GetComponent<SimultaneousUpdater>();
+		wt = updater.GetComponent<WorldTimer>();
+		SetWeapon<DaggerWeapon>();
 	}
 
 	void Start() 
@@ -55,10 +63,27 @@ public class PlayerController : MonoBehaviour {
 			// Fire off a world update
 			smu.UpdateWorld();
 
-			// Check for movement
-			if(gm.CanMove(dir)) {
-				transform.position += (Vector3)GridMovement.DirTable[dir];
+			// Reset the world timer so it doesn't prematurely fire off
+			wt.Reset();
+
+			bool attacked = weapon.Attack(dir); // Attack in the given direction
+
+			// returns false is there was no enemy to attack.
+			if(!attacked){
+				if(gm.CanMove(dir)) {
+					transform.position += (Vector3)GridMovement.DirTable[dir];
+				}
 			}
+			
 		}
 	}
+
+	public void SetWeapon<W>() where W : AbstractWeapon
+	{
+		// We don't need this weapon anymore. 
+		Destroy(weapon);
+		weapon = gameObject.AddComponent<W>() as AbstractWeapon;
+	}
+
+
 }

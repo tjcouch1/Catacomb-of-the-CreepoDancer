@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerCoinController : MonoBehaviour {
 
+	int coins;
 	public GameObject UIHundreds;
 	public GameObject UITens;
 	public GameObject UIOnes;
@@ -12,7 +13,6 @@ public class PlayerCoinController : MonoBehaviour {
 	Image tens;
 	Image ones;
 
-	public int coins;
 	public int Coins() {return coins;}
 
 	// Use this for initialization

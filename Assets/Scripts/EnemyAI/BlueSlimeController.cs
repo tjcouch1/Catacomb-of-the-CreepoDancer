@@ -12,6 +12,8 @@ public class BlueSlimeController : MonoBehaviour {
 	int step = 0;
 	Dirs[] dirs = { Dirs.DOWN, Dirs.NULL, Dirs.UP, Dirs.NULL };
 
+	EnemyComponent ec;
+
 	// Utility GridMovement component
 	GridMovement gm;
 
@@ -19,6 +21,8 @@ public class BlueSlimeController : MonoBehaviour {
 	void Start () 
 	{
 		gm = GetComponent<GridMovement>();
+		// NOTE(clark, 2/8/2017): Added ec. Calling GetComponent takes a fair bit of time
+		ec = GetComponent<EnemyComponent>();
 		GridUpdateSubscriber gus = GetComponent<GridUpdateSubscriber>();
 		gus.SetSubscriberMethod(new GridUpdateSubscriber.SubscriberDelegate(SubUpdate));
 	}
@@ -27,15 +31,23 @@ public class BlueSlimeController : MonoBehaviour {
 	{
 		if (dirs[step] != Dirs.NULL)
 		{
-			bool attacked = gameObject.GetComponent<EnemyComponent>().Attack(dirs[step]); // Attack in the given direction
+			// NOTE(clark): Keeping references to components helps a lot. 
+			bool attacked = ec.Attack(dirs[step]); 
+			// bool attacked = gameObject.GetComponent<EnemyComponent>().Attack(dirs[step]); // Attack in the given direction
 
 			// returns false is there was no enemy to attack.
-			if (!attacked)
-				if (gm.CanMove(dirs[step]))
+			if (!attacked) {
+				if (gm.CanMoveEnemy(dirs[step])) {
 					transform.position += (Vector3) GridMovement.DirTable[dirs[step]];
+				}
+				step++;	
+				step %= dirs.Length;
+			}
 		}
-		step++;
-		step %= dirs.Length;
-		Debug.Log("Delegate System works!");
+		// NOTE(clark): Added an else to fix update bug. 
+		else{
+			step++;	
+			step %= dirs.Length;
+		}
 	}
 }

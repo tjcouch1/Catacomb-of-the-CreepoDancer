@@ -23,10 +23,6 @@ public class EnemyComponent : MonoBehaviour {
 		health = maxHealth;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void Hit(int dmg) {
 		health -= dmg;

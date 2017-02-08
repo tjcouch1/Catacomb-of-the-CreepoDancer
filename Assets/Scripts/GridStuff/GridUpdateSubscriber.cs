@@ -8,11 +8,6 @@ public class GridUpdateSubscriber : MonoBehaviour
 	public delegate void SubscriberDelegate();
 	SubscriberDelegate _subMethod = null;
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 
 	public void SubUpdate() 
 	{

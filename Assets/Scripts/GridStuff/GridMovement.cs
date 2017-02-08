@@ -22,7 +22,17 @@ public class GridMovement : MonoBehaviour {
 	};
 
 	
-	public bool CanMove(Directions dir) 
+	public bool CanMovePlayer(Directions dir) 
+	{
+		return CanMove(dir, LayerMask.GetMask("Level", "Enemies"));
+	}
+
+	public bool CanMoveEnemy(Directions dir) 
+	{
+		return CanMove(dir, LayerMask.GetMask("Level", "Player"));
+	}
+
+	bool CanMove(Directions dir, LayerMask lay) 
 	{
 		if(dir == Directions.NULL) {
 			return false;
@@ -31,7 +41,7 @@ public class GridMovement : MonoBehaviour {
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
 											 DirTable[dir], 				// Lookup table (direction)!
 											 1f, 							// Only 1 unit Grid
-											 LayerMask.GetMask("Level")); 	// Only on this layer
+											 lay); 	// Only on this layer
 
 		// If null, no collision! Yay!
         return (hit.collider == null);

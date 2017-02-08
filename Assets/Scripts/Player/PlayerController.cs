@@ -80,9 +80,6 @@ public class PlayerController : MonoBehaviour {
 
 		if(dir != Dirs.NULL) {
 
-			// Fire off a world update
-			smu.UpdateWorld();
-
 			// Reset the world timer so it doesn't prematurely fire off
 			wt.Reset();
 
@@ -90,11 +87,14 @@ public class PlayerController : MonoBehaviour {
 
 			// returns false is there was no enemy to attack.
 			if(!attacked){
-				if(gm.CanMove(dir)) {
+				if(gm.CanMovePlayer(dir)) {
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 				}
 			}
-			
+
+			// NOTE(clark): Did stuff
+			// Fire off a world update
+			smu.UpdateWorld();
 		}
 	}
 

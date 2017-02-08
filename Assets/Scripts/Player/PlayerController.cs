@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour {
 	WorldTimer wt;
 	// Current weapon equipped to the player. Should be added as a component. 
 	AbstractWeapon weapon;
+	// Controls the coins of the player!
+	PlayerCoinController pcc;
 
 	// Use this for initialization
 	void Awake () {
 		gm = GetComponent<GridMovement>();
 		smu = updater.GetComponent<SimultaneousUpdater>();
 		wt = updater.GetComponent<WorldTimer>();
+		pcc = GetComponent<PlayerCoinController>();
 		SetWeapon<DaggerWeapon>();
 	}
 
@@ -48,8 +51,11 @@ public class PlayerController : MonoBehaviour {
 		// 	Debug.Log("Equipped Longsword!");
 		// 	SetWeapon<LongswordWeapon>();
 		// }
+		// if(Input.GetKeyDown(KeyCode.D)) {
+		// 	GetComponent<PlayerHealthController>().DealDamage(1);
+		// }
 		if(Input.GetKeyDown(KeyCode.D)) {
-			GetComponent<PlayerHealthController>().DealDamage(1);
+			pcc.AddCoins(3);
 		}
 
 		// Rightwards Movement

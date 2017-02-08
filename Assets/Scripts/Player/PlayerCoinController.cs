@@ -9,9 +9,11 @@ public class PlayerCoinController : MonoBehaviour {
 	public GameObject UIHundreds;
 	public GameObject UITens;
 	public GameObject UIOnes;
-	Image hundreds;
-	Image tens;
-	Image ones;
+	DigitController hundreds;
+	DigitController tens;
+	DigitController ones;
+
+	// Brute force implementation. 
 
 	public int Coins() {return coins;}
 
@@ -19,13 +21,14 @@ public class PlayerCoinController : MonoBehaviour {
 	void Awake() 
 	{
 		coins = 0;
-		hundreds = UIHundreds.GetComponent<Image>();
-		tens = UITens.GetComponent<Image>();
-		ones = UIOnes.GetComponent<Image>();
+		hundreds = UIHundreds.GetComponent<DigitController>();
+		tens = UITens.GetComponent<DigitController>();
+		ones = UIOnes.GetComponent<DigitController>();
 	}
 
 	void Start() 
 	{
+		changeUI();
 	}
 	
 	public void AddCoins(int c) 
@@ -47,6 +50,8 @@ public class PlayerCoinController : MonoBehaviour {
 	}
 
 	void changeUI() {
-		// hundreds.sprite = 
+		hundreds.DisplayDigit(coins / 100);
+		tens.DisplayDigit((coins % 100) / 10);
+		ones.DisplayDigit(coins % 10);
 	}
 }

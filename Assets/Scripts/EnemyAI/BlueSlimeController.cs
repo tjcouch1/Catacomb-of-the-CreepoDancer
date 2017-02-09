@@ -5,6 +5,7 @@ using UnityEngine;
 using Dirs = GridMovement.Directions;
 
 [RequireComponent(typeof(GridUpdateSubscriber))]
+[RequireComponent(typeof(GridMovementSubscriber))]
 [RequireComponent(typeof(GridMovement))]
 public class BlueSlimeController : MonoBehaviour {
 

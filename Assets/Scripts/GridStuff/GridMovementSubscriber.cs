@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(GridMovement))]
 public class GridMovementSubscriber : MonoBehaviour {
 
-	public delegate Vector2 MovementDeclarator();
+	public delegate Vector2 MovementMethod();
 	public delegate bool AttackMethod();
 
 	static LayerMask p_laymask = LayerMask.GetMask("Player");
@@ -14,16 +14,14 @@ public class GridMovementSubscriber : MonoBehaviour {
 
 	public enum MoveStates {
 		NULL,		// NOT PROCESSED
+		PROCESSING, // Has started processing
 		IDLE,		// NOT MOVING
-		MOVING, 	// MOVING
-		PROCESSING 	// CURRENTLY PROCESSING. 
+		MOVING, 	// PROCESSING
+		FINISHED 	// CURRENTLY PROCESSING. 
 	};
 
-	// Potentially caches a GMS for later processing
-	GridMovementSubscriber cached_gms = null;	
-
 	// Movement delegate
-	MovementDeclarator _movMethod = null;
+	MovementMethod _movMethod = null;
 
 	// Attack method
 	AttackMethod _attackMethod = null;
@@ -32,23 +30,10 @@ public class GridMovementSubscriber : MonoBehaviour {
 	Vector2 declaredMovement = Vector2.zero;
 
 	// State of the current enemy movement. 
-	MoveStates state = MoveStates.IDLE;
+	MoveStates state = MoveStates.NULL;
 
-	public void ProcessState() 
+	void ProcessState() 
 	{
-		if(cached_gms != null) {
-			if(t_gms.GetState() == MoveStates.MOVING){
-				// They're moving? Cool. Let's move. 
-				state = MoveStates.MOVING;
-			}
-			else {
-				// Else we're tenative about action. 
-				state = MoveStates.TENATIVE;
-				// cache the gms so we don't have to waste getting it later. 
-				cached_gms = t_gms;
-			}
-		}
-
 		// Check for null case
 		if(declaredMovement == Vector2.zero) {
 			state = MoveStates.IDLE;
@@ -64,6 +49,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 				LayerMask.GetMask("Level", "Player", "Enemies")
 			); 	
 
+			// Hit something. 
 			if(hit.collider != null) {
 				LayerMask mask = hit.collider.gameObject.layer;
 				// Switch off the mask
@@ -79,22 +65,24 @@ public class GridMovementSubscriber : MonoBehaviour {
 						hit.collider.gameObject.GetComponent<GridMovementSubscriber>();
 
 					if(t_gms != null) {
-						if(t_gms.GetState() == MoveStates.MOVING){
-							// They're moving? Cool. Let's move. 
-							state = MoveStates.MOVING;
+
+						MoveStates t_state = t_gms.GetState();
+						// If it has not processed its mo
+
+						// Force it to finish its movement. Recursive. 
+						if(t_state == MoveStates.NULL) {
+							t_gms.Move();
 						}
+						// If it hits this, then we've gotten into a recursive loop. Time to end it. 
+						// Or it's just finished. Either way, it has already processed. 
 						else {
-							// Else we're tenative about action. 
-							state = MoveStates.TENATIVE;
-							// cache the gms so we don't have to waste getting it later. 
-							cached_gms = t_gms;
+							state = MoveStates.IDLE;
 						}
 					}
 					// Else the enemy doesn't move. Therefore I can't move. 
 					else {
 						state = MoveStates.IDLE;
 					}
-
 				}
 
 				// Level layer hit
@@ -109,9 +97,13 @@ public class GridMovementSubscriber : MonoBehaviour {
 	}
 
 	// Updates the movement compoent of the enemy. 
-	public void DeclareMovement()
+	public void Move()
 	{
 		bool attacked = false;
+
+		// Start processing. 
+		state = MoveStates.PROCESSING;
+
 
 		// Calls attack method. Should return true if everything is cool
 		if(_attackMethod != null) {
@@ -125,22 +117,21 @@ public class GridMovementSubscriber : MonoBehaviour {
 		if(_movMethod != null && attacked == false) {
 			// Grab movement from the _movMethod
 			declaredMovement = _movMethod();
+
+			// Upon exiting, it should either be IDLE or MOVING. 
 			ProcessState();
 		}
-	}
 
-	// Actually moves the enemy. 
-	public void Move() 
-	{
 		if(state == MoveStates.MOVING) {
 			transform.position += (Vector3)declaredMovement;
 		}
 
-		state = MoveStates.IDLE;
-		cached_gms = null;
+		// LABEL AS FINISHED>
+		state = MoveStates.FINISHED;
 	}
+	// Actually moves the enemy. 
 
-	public void SetMovementMethod(MovementDeclarator method) { _movMethod = method; }
+	public void SetMovementMethod(MovementMethod method) { _movMethod = method; }
 	public void SetAttackMethod(AttackMethod method) { _attackMethod = method; }
 	public MoveStates GetState() { return state; }
 }

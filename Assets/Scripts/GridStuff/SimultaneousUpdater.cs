@@ -21,21 +21,24 @@ public class SimultaneousUpdater : MonoBehaviour
 
    			// Process movement for component.
    			if(gms != null) {
-   				if(gms.GetState() != MoveStates.NULL) {
-	   				gms.DeclareMovement();
-	   				// // Try to process again later. 
-	   				// if(gms.GetState() == MoveStates.TENATIVE) {
-	   				// 	fail_list.add(gms);
-	   				// }
+   				if(gms.GetState() == MoveStates.NULL) {
+	   				gms.Move();
 	   			}
    			}
     	}
 
+    	// Process Updates. 
+		foreach (Transform child in transform){
+   			gus = child.gameObject.GetComponent<GridUpdateSubscriber>();
+   			// gms = child.gameObject.GetComponent<GridMovementSubscriber>();
 
-   			// if(gus != null) {
-   				// If it exists, update it!
-   				// gus.SubUpdate();
-   			// }
+   			// Process movement for component.
+   			if(gus != null) {
+   				gus.SubUpdate();
+   			}
+    	}
+
+
 	}
 
 }

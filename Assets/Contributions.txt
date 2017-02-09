@@ -19,6 +19,7 @@ Clark Chambers
 		+ Main Player
 		+ Cash
 		+ Heart Variants (Full, half, empty)
+		+ Green Slime
 	- Scenes
 		+ Level 1
 			(Level implementation and collision checking)
@@ -36,6 +37,7 @@ Clark Chambers
 		+ AbstractWeapon.cs
 		+ DaggerWeapon.cs
 		+ LongswordWeapon.cs
+		+ GreenSlimeController.cs
 
 
 
@@ -46,6 +48,10 @@ TJ Couch
 	- Prefabs
 		+ Level 1
 			(Design)
+	-Scripts
+		+ BlueSlimeController.cs
+Enemy AI, movement, and combat
+Translation between tiles
 
 
 Molly Scumer

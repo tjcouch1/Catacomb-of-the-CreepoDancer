@@ -38,6 +38,8 @@ public class BlueSlimeController : MonoBehaviour {
 			// returns false is there was no enemy to attack.
 			if (!attacked) {
 				if (gm.CanMoveEnemy(dirs[step])) {
+					GridSpriteTranslate gst = GetComponentInChildren<GridSpriteTranslate>();
+					gst.StartTranslation();
 					transform.position += (Vector3) GridMovement.DirTable[dirs[step]];
 				}
 				step++;	

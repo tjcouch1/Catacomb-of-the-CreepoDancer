@@ -15,6 +15,7 @@ public class GridMovement : MonoBehaviour {
 
 	public static Dictionary<Directions, Vector2> DirTable = new Dictionary<Directions, Vector2> 
 	{
+		{Directions.NULL, Vector2.zero},
 		{Directions.UP, Vector2.up},
 		{Directions.DOWN, -Vector2.up},
 		{Directions.RIGHT, Vector2.right},

@@ -37,13 +37,13 @@ public class EnemyComponent : MonoBehaviour {
 		Destroy(gameObject);
 	}
 
-	public bool Attack(Dirs dir)
+	public bool Attack(Vector2 offset)
 	{
-		// Shoot out a ray to check for a collision with the level layer. 
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
-			GridMovement.DirTable[dir], 	// Lookup table (direction)!
-			1f, 							// Only 1 unit Grid
-			LayerMask.GetMask("Player")); // Only on this layer
+		// Check the grid position for the player. 
+		RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)offset, 	// origin
+											 Vector2.up, 			// Lookup table (direction)!
+											 0.1f, 									// Only 1 unit Grid
+											 LayerMask.GetMask("Player")); 			// Only on this layer
 
 		// If a collider exists, we found an enemy
 		if(hit.collider != null){

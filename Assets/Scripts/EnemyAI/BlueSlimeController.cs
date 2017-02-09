@@ -21,14 +21,19 @@ public class BlueSlimeController : MonoBehaviour {
 	// Projected movement
 	Vector3 projectedMovement;
 
+	// Caching attack because we care!
+	bool attacked;
+
 	// Use this for initialization
 	void Start () 
 	{
-		gm = GetComponent<GridMovement>();
 		// NOTE(clark, 2/8/2017): Added ec. Calling GetComponent takes a fair bit of time
 		ec = GetComponent<EnemyComponent>();
 		GridUpdateSubscriber gus = GetComponent<GridUpdateSubscriber>();
+		GridMovementSubscriber gms = GetComponent<GridMovementSubscriber>();
 		gus.SetSubscriberMethod(new GridUpdateSubscriber.SubscriberDelegate(SubUpdate));
+		gms.SetMovementMethod(new GridMovementSubscriber.MovementMethod(SubMovement));
+		gms.SetAttackMethod(new GridMovementSubscriber.AttackMethod(SubAttack));
 	}
 
 	// Subscriber method. 
@@ -36,15 +41,9 @@ public class BlueSlimeController : MonoBehaviour {
 	{
 		if (dirs[step] != Dirs.NULL)
 		{
-			// NOTE(clark): Keeping references to components helps a lot. 
-			bool attacked = ec.Attack(dirs[step]); 
-			// bool attacked = gameObject.GetComponent<EnemyComponent>().Attack(dirs[step]); // Attack in the given direction
-
 			// returns false is there was no enemy to attack.
 			if (!attacked) {
-				if (gm.CanMoveEnemy(dirs[step])) {
-					transform.position += (Vector3) GridMovement.DirTable[dirs[step]];
-				}
+				
 				step++;	
 				step %= dirs.Length;
 			}
@@ -62,10 +61,15 @@ public class BlueSlimeController : MonoBehaviour {
 	}
 
 	// Movement Subscriber Method
-	void SubMovement() 
+	Vector2 SubMovement() 
 	{
-
+		return GridMovement.DirTable[dirs[step]];
 	}
 
 	// 
+	bool SubAttack()
+	{
+		attacked = ec.Attack(GridMovement.DirTable[(dirs[step])]); 
+		return attacked;	
+	}
 }

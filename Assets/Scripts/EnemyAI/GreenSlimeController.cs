@@ -19,18 +19,18 @@ public class GreenSlimeController : MonoBehaviour {
 		
 	void SubUpdate() 
 	{
-		Debug.Log("Delegate System works!");
+		// Debug.Log("Delegate System works!");
 	}
 
 	Vector2 SubMovement()
 	{
-		Debug.Log("SubMovement Called");
+		// Debug.Log("SubMovement Called");
 		return Vector2.zero;
 	}
 
 	bool SubAttack() 
 	{
-		Debug.Log("SubAttack Called");
+		// Debug.Log("SubAttack Called");
 		return false;
 	} 
 }

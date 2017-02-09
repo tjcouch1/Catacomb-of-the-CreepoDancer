@@ -30,6 +30,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 	// State of the current enemy movement. 
 	MoveStates state = MoveStates.NULL;
 
+	// Processed the current state. 
 	void ProcessState() 
 	{
 		// Check for null case
@@ -42,7 +43,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 			// Shoot out a ray to check for a collision with the level layer. 
 			RaycastHit2D hit = Physics2D.Raycast(
 				transform.position + (Vector3)declaredMovement, // origin
-				Vector2.up, 		// Lookup table (direction)!
+				Vector2.up, 		// direction!
 				0.1f, 		// Only check this cell unit on Grid
 				LayerMask.GetMask("Level", "Player", "Enemies")
 			); 	
@@ -51,14 +52,16 @@ public class GridMovementSubscriber : MonoBehaviour {
 			if(hit.collider != null) {
 				LayerMask mask = hit.collider.gameObject.layer;
 				// Switch off the mask
+				Debug.Log(mask);
 
 				// Player layer hit. 
-				if(mask == LayerMask.GetMask("Player")) {
+				if(mask == LayerMask.NameToLayer("Player")) {
 					state = MoveStates.IDLE;
 				}
 
 				// Enemies layer hit
-				else if(mask == LayerMask.GetMask("Enemies")) {
+				else if(mask == LayerMask.NameToLayer("Enemies")) {
+					Debug.Log("Hit an enemy");
 					GridMovementSubscriber t_gms = 
 						hit.collider.gameObject.GetComponent<GridMovementSubscriber>();
 
@@ -70,6 +73,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 						// Force it to finish its movement. Recursive. 
 						if(t_state == MoveStates.NULL) {
 							t_gms.Move();
+							ProcessState();
 						}
 						// If it hits this, then we've gotten into a recursive loop. Time to end it. 
 						// Or it's just finished. Either way, it has already processed. 
@@ -84,7 +88,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 				}
 
 				// Level layer hit
-				else if(mask == LayerMask.GetMask("Level")) {
+				else if(mask == LayerMask.NameToLayer("Level")) {
 					state = MoveStates.IDLE;
 				}
 			}
@@ -92,6 +96,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 				state = MoveStates.MOVING;
 			}
 		}
+		// Debug.Log(transform.name + ": State- " + state.ToString());
 	}
 
 	// Updates the movement compoent of the enemy. 
@@ -127,7 +132,6 @@ public class GridMovementSubscriber : MonoBehaviour {
 		// LABEL AS FINISHED
 		state = MoveStates.FINISHED;
 	}
-	// Actually moves the enemy. 
 
 	public void SetMovementMethod(MovementMethod method) { _movMethod = method; }
 	public void SetAttackMethod(AttackMethod method) { _attackMethod = method; }

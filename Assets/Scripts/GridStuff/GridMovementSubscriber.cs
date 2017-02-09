@@ -8,9 +8,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 	public delegate Vector2 MovementMethod();
 	public delegate bool AttackMethod();
 
-	static LayerMask p_laymask = LayerMask.GetMask("Player");
-	static LayerMask e_laymask = LayerMask.GetMask("Enemies");
-	static LayerMask l_laymask = LayerMask.GetMask("Level");
+
 
 	public enum MoveStates {
 		NULL,		// NOT PROCESSED
@@ -55,12 +53,12 @@ public class GridMovementSubscriber : MonoBehaviour {
 				// Switch off the mask
 
 				// Player layer hit. 
-				if(mask == p_laymask) {
+				if(mask == LayerMask.GetMask("Player")) {
 					state = MoveStates.IDLE;
 				}
 
 				// Enemies layer hit
-				else if(mask == e_laymask) {
+				else if(mask == LayerMask.GetMask("Enemies")) {
 					GridMovementSubscriber t_gms = 
 						hit.collider.gameObject.GetComponent<GridMovementSubscriber>();
 
@@ -86,7 +84,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 				}
 
 				// Level layer hit
-				else if(mask == l_laymask) {
+				else if(mask == LayerMask.GetMask("Level")) {
 					state = MoveStates.IDLE;
 				}
 			}
@@ -126,7 +124,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 			transform.position += (Vector3)declaredMovement;
 		}
 
-		// LABEL AS FINISHED>
+		// LABEL AS FINISHED
 		state = MoveStates.FINISHED;
 	}
 	// Actually moves the enemy. 
@@ -134,4 +132,5 @@ public class GridMovementSubscriber : MonoBehaviour {
 	public void SetMovementMethod(MovementMethod method) { _movMethod = method; }
 	public void SetAttackMethod(AttackMethod method) { _attackMethod = method; }
 	public MoveStates GetState() { return state; }
+	public void SetState(MoveStates ms) { state = ms; }
 }

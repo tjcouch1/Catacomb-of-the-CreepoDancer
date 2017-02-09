@@ -31,6 +31,7 @@ public class BlueSlimeController : MonoBehaviour {
 		gus.SetSubscriberMethod(new GridUpdateSubscriber.SubscriberDelegate(SubUpdate));
 	}
 
+	// Subscriber method. 
 	void SubUpdate() 
 	{
 		if (dirs[step] != Dirs.NULL)
@@ -59,4 +60,12 @@ public class BlueSlimeController : MonoBehaviour {
 			step %= dirs.Length;
 		}
 	}
+
+	// Movement Subscriber Method
+	void SubMovement() 
+	{
+
+	}
+
+	// 
 }

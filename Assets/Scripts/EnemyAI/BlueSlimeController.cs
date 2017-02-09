@@ -43,6 +43,11 @@ public class BlueSlimeController : MonoBehaviour {
 				step++;	
 				step %= dirs.Length;
 			}
+			// NOTE(clark): If the slime attacked, backtrack to the previous step to keep slime within bounds. 
+			else {
+				step += 3;
+				step %= dirs.Length;
+			}
 		}
 		// NOTE(clark): Added an else to fix update bug. 
 		else{

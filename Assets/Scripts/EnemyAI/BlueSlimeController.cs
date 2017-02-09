@@ -17,6 +17,9 @@ public class BlueSlimeController : MonoBehaviour {
 	// Utility GridMovement component
 	GridMovement gm;
 
+	// Projected movement
+	Vector3 projectedMovement;
+
 	// Use this for initialization
 	void Start () 
 	{

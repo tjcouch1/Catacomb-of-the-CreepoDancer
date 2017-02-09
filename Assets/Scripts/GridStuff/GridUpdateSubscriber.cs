@@ -7,7 +7,6 @@ public class GridUpdateSubscriber : MonoBehaviour
 
 	public delegate void SubscriberDelegate();
 	SubscriberDelegate _subMethod = null;
-	
 
 	public void SubUpdate() 
 	{
@@ -16,9 +15,5 @@ public class GridUpdateSubscriber : MonoBehaviour
 		}
 	}
 
-	public void SetSubscriberMethod(SubscriberDelegate method) 
-	{
-		_subMethod = method;
-	}
-
+	public void SetSubscriberMethod(SubscriberDelegate method) { _subMethod = method; }
 }

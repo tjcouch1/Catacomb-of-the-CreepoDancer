@@ -28,7 +28,7 @@ public class PlayerCoinController : MonoBehaviour {
 
 	void Start() 
 	{
-		changeUI();
+		// changeUI();
 	}
 	
 	public void AddCoins(int c) 

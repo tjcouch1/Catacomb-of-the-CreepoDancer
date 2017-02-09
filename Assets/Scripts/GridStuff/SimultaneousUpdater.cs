@@ -2,28 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using MoveStates = GridMovementSubscriber.MoveStates;
+
 public class SimultaneousUpdater : MonoBehaviour 
 {
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 
 	public void UpdateWorld() 
 	{
 		// Get th egus
 		GridUpdateSubscriber gus;
+		GridMovementSubscriber gms;
 
-		// For each object (enemy) that's a child of the world
+		// List of tenative movement objects that couldn't process. 
+
+		// Process enemy movement. 
 		foreach (Transform child in transform){
-			// Get the gus!
-   			gus = child.gameObject.GetComponent<GridUpdateSubscriber>();
+   			gms = child.gameObject.GetComponent<GridMovementSubscriber>();
 
-   			if(gus != null) {
-   				// If it exists, update it!
-   				gus.SubUpdate();
+   			// Process movement for component.
+   			if(gms != null) {
+   				if(gms.GetState() != MoveStates.NULL) {
+	   				gms.DeclareMovement();
+	   				// // Try to process again later. 
+	   				// if(gms.GetState() == MoveStates.TENATIVE) {
+	   				// 	fail_list.add(gms);
+	   				// }
+	   			}
    			}
     	}
+
+
+   			// if(gus != null) {
+   				// If it exists, update it!
+   				// gus.SubUpdate();
+   			// }
 	}
+
 }

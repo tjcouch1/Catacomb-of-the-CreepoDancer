@@ -15,6 +15,6 @@ public class GreenSlimeController : MonoBehaviour {
 		
 	void SubUpdate() 
 	{
-		Debug.Log("Delegate System works!");
+		// Debug.Log("Delegate System works!");
 	}
 }

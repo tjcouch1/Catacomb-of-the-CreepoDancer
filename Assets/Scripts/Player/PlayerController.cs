@@ -88,8 +88,6 @@ public class PlayerController : MonoBehaviour {
 			// returns false is there was no enemy to attack.
 			if(!attacked){
 				if(gm.CanMovePlayer(dir)) {
-					GridSpriteTranslate gst = GetComponentInChildren<GridSpriteTranslate>();
-					gst.StartTranslation();
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 				}
 			}

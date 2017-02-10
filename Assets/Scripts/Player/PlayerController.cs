@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
 
 	// Gamd updater
 	public GameObject updater;
+
+	// Sends messages
+	public GameObject weaponSprite;
 	// Utility GridMovement component
 	GridMovement gm;
 	// World simultaneous updater
@@ -103,6 +106,17 @@ public class PlayerController : MonoBehaviour {
 		// We don't need this weapon anymore. 
 		Destroy(weapon);
 		weapon = gameObject.AddComponent<W>() as AbstractWeapon;
+
+		System.Type t = weapon.GetType();
+		if(t == typeof(DaggerWeapon)) {
+			weaponSprite.SendMessage("EquipWeapon", "dagger");
+		}
+		else if(t == typeof(LongswordWeapon)) {
+			weaponSprite.SendMessage("EquipWeapon", "longsword");
+		}
+		else if(t == typeof(GunWeapon)) {
+			weaponSprite.SendMessage("EquipWeapon", "gun");
+		}
 	}
 
 

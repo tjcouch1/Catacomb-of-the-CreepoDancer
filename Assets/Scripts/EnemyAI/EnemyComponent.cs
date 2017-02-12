@@ -16,8 +16,6 @@ public class EnemyComponent : MonoBehaviour {
 	public int attackPower;
 	int health;
 
-	public GameObject player;
-
 	// Use this for initialization
 	void Start () {
 		health = maxHealth;

@@ -12,7 +12,7 @@ public class PickupWeapon : MonoBehaviour {
 
 	public GameObject price;
 	public GameObject floaty;
-	public SpriteRenderer floaty_sr;
+	SpriteRenderer floaty_sr;
 	public WeaponType type;
 
 	public Sprite dag_sprite;

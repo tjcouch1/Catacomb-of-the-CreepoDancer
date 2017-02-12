@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 		// 	GetComponent<PlayerHealthController>().DealDamage(1);
 		// }
 		if(Input.GetKeyDown(KeyCode.E)) {
-			pcc.AddCoins(3);
+			pcc.AddCoins(20);
 		}
 
 		// Rightwards Movement

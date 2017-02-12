@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour {
 		smu = updater.GetComponent<SimultaneousUpdater>();
 		wt = updater.GetComponent<WorldTimer>();
 		pcc = GetComponent<PlayerCoinController>();
-		SetWeapon<DaggerWeapon>();
 	}
 
 	void Start() 
@@ -37,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		if(smu == null) {
 			Debug.Log("Updater Isn't configured correctly.");
 		}
+		SetWeapon<DaggerWeapon>();
 	}
 	
 	// Update is called once per frame

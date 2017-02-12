@@ -52,7 +52,7 @@ public class GridMovementSubscriber : MonoBehaviour {
 			if(hit.collider != null) {
 				LayerMask mask = hit.collider.gameObject.layer;
 				// Switch off the mask
-				Debug.Log(mask);
+				// Debug.Log(mask);
 
 				// Player layer hit. 
 				if(mask == LayerMask.NameToLayer("Player")) {

@@ -46,18 +46,22 @@ public class PlayerController : MonoBehaviour {
 
 
 		// TEST CODE
-		// if(Input.GetKeyDown(KeyCode.D)) {
-		// 	Debug.Log("Equipped dagger!");
-		// 	SetWeapon<DaggerWeapon>();
-		// }
-		// if(Input.GetKeyDown(KeyCode.S)) {
-		// 	Debug.Log("Equipped Longsword!");
-		// 	SetWeapon<LongswordWeapon>();
-		// }
+		if(Input.GetKeyDown(KeyCode.D)) {
+			Debug.Log("Equipped dagger!");
+			SetWeapon<DaggerWeapon>();
+		}
+		if(Input.GetKeyDown(KeyCode.S)) {
+			Debug.Log("Equipped Longsword!");
+			SetWeapon<LongswordWeapon>();
+		}
+		if(Input.GetKeyDown(KeyCode.A)) {
+			Debug.Log("Equipped GUN!");
+			SetWeapon<GunWeapon>();
+		}
 		// if(Input.GetKeyDown(KeyCode.D)) {
 		// 	GetComponent<PlayerHealthController>().DealDamage(1);
 		// }
-		if(Input.GetKeyDown(KeyCode.D)) {
+		if(Input.GetKeyDown(KeyCode.E)) {
 			pcc.AddCoins(3);
 		}
 
@@ -101,13 +105,33 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void SetWeapon<W>() where W : AbstractWeapon
+	// I am being lazy and making the return a string. 
+	public string SetWeapon<W>() where W : AbstractWeapon
 	{
+
+		// Store what weapon WAS equipped.
+		string ret = "null";
+		System.Type t;
+		if(weapon != null){
+			t = weapon.GetType();
+			if(t == typeof(DaggerWeapon)) {
+				ret = "dagger";
+			}
+			else if(t == typeof(LongswordWeapon)) {
+				ret = "longsword";
+			}
+			else if(t == typeof(GunWeapon)) {
+				ret = "gun";
+			}
+		}
+
 		// We don't need this weapon anymore. 
 		Destroy(weapon);
 		weapon = gameObject.AddComponent<W>() as AbstractWeapon;
 
-		System.Type t = weapon.GetType();
+		// I am being lazy and making the return a string. 
+
+		t = weapon.GetType();
 		if(t == typeof(DaggerWeapon)) {
 			weaponSprite.SendMessage("EquipWeapon", "dagger");
 		}
@@ -117,6 +141,8 @@ public class PlayerController : MonoBehaviour {
 		else if(t == typeof(GunWeapon)) {
 			weaponSprite.SendMessage("EquipWeapon", "gun");
 		}
+
+		return ret;
 	}
 
 

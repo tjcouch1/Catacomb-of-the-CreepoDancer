@@ -7,7 +7,21 @@
  ______ ______|      |.-----.-----.|  |_.----.|__|  |--.--.--.|  |_|__|.-----.-----.-----.
 |______|______|   ---||  _  |     ||   _|   _||  |  _  |  |  ||   _|  ||  _  |     |__ --|
               |______||_____|__|__||____|__|  |__|_____|_____||____|__||_____|__|__|_____|
-                                                                                          
+                                                                                         
+
+TJ Couch
+=======================
+- Assets
+	- Prefabs
+		+ Level 1
+			(Design)
+
+
+Molly Scumer
+=======================
+- Assets
+
+
 
 Clark Chambers
 ======================
@@ -36,21 +50,17 @@ Clark Chambers
 		+ AbstractWeapon.cs
 		+ DaggerWeapon.cs
 		+ LongswordWeapon.cs
+		+ ArrowScript.cs
+		+ GameDigitController.cs
+		+ PickupWeapon.cs
+		+ SinOscelator.cs
+		+ WeaponChanger.cs
+		+ GunWeapon.cs
 
+	- Sprites
+		+ Timeglass/Timebar
+		+ ArrowSprite
 
-
-
-TJ Couch
-=======================
-- Assets
-	- Prefabs
-		+ Level 1
-			(Design)
-
-
-Molly Scumer
-=======================
-- Assets
 
 
 External Tools and Assets
@@ -66,4 +76,6 @@ External Tools and Assets
 			+ Camera2DFollow. Always a good tool for cameras!
 	- Sprites
 		+ All of them. Stolen. From Crypt of the Necrodancer.
+
+
 

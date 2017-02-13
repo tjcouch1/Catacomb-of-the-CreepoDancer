@@ -41,7 +41,19 @@ public class GunWeapon : AbstractWeapon {
 
 				// Rotate
 				float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
- 				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);	
+ 				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
+				// Make a swipe.
+				GameObject swipe = Instantiate(Resources.Load("ArrowSwipe") as GameObject);
+
+				// Set potision 
+				trans = swipe.transform;
+				trans.position = transform.position + ((Vector3)vdir * 1f);	
+
+				// Rotate
+				angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+ 				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);		
 
  				return true;	
 			}

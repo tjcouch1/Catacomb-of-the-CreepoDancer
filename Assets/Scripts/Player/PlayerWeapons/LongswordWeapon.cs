@@ -40,6 +40,22 @@ public class LongswordWeapon : AbstractWeapon {
 			}
 		}
 
+		if(hit.collider != null || hit2.collider != null) {
+
+			Vector2 vdir = GridMovement.DirTable[dir];
+				
+			// Make a swipe.
+			GameObject swipe = Instantiate(Resources.Load("LongswordSwipe") as GameObject);
+
+			// Set potision 
+			Transform trans = swipe.transform;
+			trans.position = transform.position + ((Vector3)vdir * 1.5f);	
+
+			// Rotate
+			float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+			trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		}
+
 		return (hit.collider != null || hit2.collider != null);
 	}
 	

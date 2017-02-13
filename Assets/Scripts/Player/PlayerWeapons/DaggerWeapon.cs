@@ -23,6 +23,20 @@ public class DaggerWeapon : AbstractWeapon {
 			EnemyComponent ec = hit.collider.gameObject.GetComponent<EnemyComponent>();
 			if(ec != null) {
 				ec.Hit(damage);
+
+				// Direction
+				Vector2 vdir = GridMovement.DirTable[dir];
+
+				// Make an arrow.
+				GameObject swipe = Instantiate(Resources.Load("DaggerSwipe") as GameObject);
+
+				// Set potision 
+				Transform trans = swipe.transform;
+				trans.position = transform.position + (Vector3)vdir;	
+
+				// Rotate
+				float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+ 				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);	
 			}
 		}
 		return (hit.collider != null);

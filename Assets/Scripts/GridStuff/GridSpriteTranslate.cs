@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class GridSpriteTranslate : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (translateCurrent < translateTime)
+		//if (translateCurrent < translateTime)
 		{
 			SetPosition();
 

@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour {
 					gst.StartTranslation();
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
+
+					gst.SetPosition();
 				}
 			}
 

@@ -18,11 +18,15 @@ TJ Couch
 		+ Green Slime
 		+ Blue Slime
 		+ Gold Slime
+		+ CoinDrop
     -Scripts
+		+ EnemyComponent.cs
 		+ GridSpriteTranslate.cs
 		+ GreenSlimeController.cs
         + BlueSlimeController.cs
 		+ GoldSlimeController.cs
+		+ CoinComponent.cs
+		
 	-Visuals
 		+ Translation between tiles
 	
@@ -30,8 +34,11 @@ TJ Couch
 		+ Green Slime
 		+ Blue Slime
 		+ Gold Slime
+		+ Enemy Swipe
+		+ Stepping Stone
+		+ Coins
 Enemy AI, movement, and combat
-Translation between tiles
+Translation between tiles including walking and jumping
 
 
 Molly Sulcer

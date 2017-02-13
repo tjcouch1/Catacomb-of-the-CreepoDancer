@@ -53,9 +53,10 @@ public class BlueSlimeController : MonoBehaviour {
 				step %= dirs.Length;
 			}
 			// NOTE(clark): If the slime attacked, backtrack to the previous step to keep slime within bounds. 
-			else {
-				step += dirs.Length - 1;
-				step %= dirs.Length;
+			else {//NOTE(TJ): I removed this because it makes the gold slime go off pattern. Now the slime just keeps trying if he doesn't get to his new position
+				
+				//step += dirs.Length - 1;
+				//step %= dirs.Length;
 			}
 		}
 		// NOTE(clark): Added an else to fix update bug. 

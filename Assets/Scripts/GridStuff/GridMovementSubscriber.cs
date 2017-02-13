@@ -131,6 +131,8 @@ public class GridMovementSubscriber : MonoBehaviour {
 			gst.StartTranslation();
 
 			transform.position += (Vector3)declaredMovement;
+
+			gst.SetPosition();
 		}
 
 		// LABEL AS FINISHED

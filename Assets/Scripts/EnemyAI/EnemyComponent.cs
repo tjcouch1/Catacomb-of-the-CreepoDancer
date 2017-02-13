@@ -32,6 +32,7 @@ public class EnemyComponent : MonoBehaviour {
 	public void Die()
 	{
 		//add coins to player
+		GameObject coins = (GameObject) Instantiate(Resources.Load("CoinDrop"));
 		Destroy(gameObject);
 	}
 
@@ -49,6 +50,20 @@ public class EnemyComponent : MonoBehaviour {
 			PlayerHealthController phc = hit.collider.gameObject.GetComponent<PlayerHealthController>();
 			if(phc != null) {
 				phc.DealDamage(attackPower);
+
+				// Direction
+				Vector2 vdir = offset;
+
+				// Make an arrow.
+				GameObject swipe = Instantiate(Resources.Load("EnemySwipe") as GameObject);
+
+				// Set potision 
+				Transform trans = swipe.transform;
+				trans.position = transform.position + (Vector3)vdir;	
+
+				// Rotate
+				float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);	
 			}
 		}
 		return (hit.collider != null);

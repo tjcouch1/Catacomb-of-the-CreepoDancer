@@ -7,11 +7,32 @@ using Dirs = GridMovement.Directions;
 [RequireComponent(typeof(GridUpdateSubscriber))]
 [RequireComponent(typeof(GridMovementSubscriber))]
 [RequireComponent(typeof(GridMovement))]
-public class BlueSlimeController : MonoBehaviour {
+public class GoldSlimeController : BlueSlimeController {
+
+	Dirs[] newDirs = { Dirs.DOWN, Dirs.LEFT, Dirs.UP, Dirs.RIGHT };
+
+	void Start()
+	{
+		base.Init();
+		dirs = newDirs;
+	}
+}
+
+/*
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+using Dirs = GridMovement.Directions;
+
+[RequireComponent(typeof(GridUpdateSubscriber))]
+[RequireComponent(typeof(GridMovementSubscriber))]
+[RequireComponent(typeof(GridMovement))]
+public class GoldSlimeController : MonoBehaviour {
 
 	//path and current position in path
 	int step = 0;
-	protected Dirs[] dirs = { Dirs.DOWN, Dirs.NULL, Dirs.UP, Dirs.NULL };
+	Dirs[] dirs = { Dirs.DOWN, Dirs.LEFT, Dirs.UP, Dirs.RIGHT };
 
 	EnemyComponent ec;
 
@@ -26,11 +47,6 @@ public class BlueSlimeController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () 
-	{
-		Init();
-	}
-
-	protected void Init()
 	{
 		// NOTE(clark, 2/8/2017): Added ec. Calling GetComponent takes a fair bit of time
 		ec = GetComponent<EnemyComponent>();
@@ -48,7 +64,7 @@ public class BlueSlimeController : MonoBehaviour {
 		{
 			// returns false is there was no enemy to attack.
 			if (!attacked) {
-				
+
 				step++;	
 				step %= dirs.Length;
 			}
@@ -78,3 +94,4 @@ public class BlueSlimeController : MonoBehaviour {
 		return attacked;	
 	}
 }
+*/

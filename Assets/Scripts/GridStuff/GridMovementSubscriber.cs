@@ -126,6 +126,10 @@ public class GridMovementSubscriber : MonoBehaviour {
 		}
 
 		if(state == MoveStates.MOVING) {
+
+			GridSpriteTranslate gst = GetComponentInChildren<GridSpriteTranslate>();
+			gst.StartTranslation();
+
 			transform.position += (Vector3)declaredMovement;
 		}
 

@@ -15,9 +15,26 @@ TJ Couch
 	- Prefabs
 		+ Level 1
 			(Design)
+		+ Green Slime
+		+ Blue Slime
+		+ Gold Slime
+    -Scripts
+		+ GridSpriteTranslate.cs
+		+ GreenSlimeController.cs
+        + BlueSlimeController.cs
+		+ GoldSlimeController.cs
+	-Visuals
+		+ Translation between tiles
+	
+	-Sprites
+		+ Green Slime
+		+ Blue Slime
+		+ Gold Slime
+Enemy AI, movement, and combat
+Translation between tiles
 
 
-Molly Scumer
+Molly Sulcer
 =======================
 - Assets
 

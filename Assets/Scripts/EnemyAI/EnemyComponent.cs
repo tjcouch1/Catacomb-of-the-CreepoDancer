@@ -6,6 +6,8 @@ using Dirs = GridMovement.Directions;
 
 public class EnemyComponent : MonoBehaviour {
 
+	bool dead = false;
+
 	[Range(0,100)]
 	public int goldDrop;
 
@@ -37,6 +39,9 @@ public class EnemyComponent : MonoBehaviour {
 		coins.transform.position = transform.position;
 		// coins
 		coins.GetComponent<CoinComponent>().Coins = goldDrop;
+
+		dead = true;
+
 		// boom
 		Destroy(gameObject);
 
@@ -50,34 +55,40 @@ public class EnemyComponent : MonoBehaviour {
 
 	public bool Attack(Vector2 offset)
 	{
-		// Check the grid position for the player. 
-		RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)offset, 	// origin
-											 Vector2.up, 			// Lookup table (direction)!
-											 0.1f, 									// Only 1 unit Grid
-											 LayerMask.GetMask("Player")); 			// Only on this layer
+		if(!dead){
+			// Check the grid position for the player. 
+			RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)offset, 	// origin
+												 Vector2.up, 			// Lookup table (direction)!
+												 0.1f, 									// Only 1 unit Grid
+												 LayerMask.GetMask("Player")); 			// Only on this layer
 
-		// If a collider exists, we found an enemy
-		if(hit.collider != null){
-			// Debug.Log("FOUND AN ENEMY!!!");
-			PlayerHealthController phc = hit.collider.gameObject.GetComponent<PlayerHealthController>();
-			if(phc != null) {
-				phc.DealDamage(attackPower);
+			// If a collider exists, we found an enemy
+			if(hit.collider != null){
+				// Debug.Log("FOUND AN ENEMY!!!");
+				PlayerHealthController phc = hit.collider.gameObject.GetComponent<PlayerHealthController>();
+				if(phc != null) {
+					phc.DealDamage(attackPower);
 
-				// Direction
-				Vector2 vdir = offset;
+					// Direction
+					Vector2 vdir = offset;
 
-				// Make an arrow.
-				GameObject swipe = Instantiate(Resources.Load("EnemySwipe") as GameObject);
+					// Make an arrow.
+					GameObject swipe = Instantiate(Resources.Load("EnemySwipe") as GameObject);
 
-				// Set potision 
-				Transform trans = swipe.transform;
-				trans.position = transform.position + (Vector3)vdir;	
+					// Set potision 
+					Transform trans = swipe.transform;
+					trans.position = transform.position + (Vector3)vdir;	
 
-				// Rotate
-				float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
-				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);	
+					// Rotate
+					float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+					trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);	
+				}
 			}
+			return (hit.collider != null);
 		}
-		return (hit.collider != null);
+		else {
+			return false;
+		}
 	}
+	
 }

@@ -17,4 +17,9 @@ public class CoinComponent : MonoBehaviour {
 	void Update () {
 		anim.SetInteger("Coins", coins);
 	}
+
+	public int Coins {
+		get { return coins; }
+		set { coins = value; }
+	}
 }

@@ -33,7 +33,11 @@ public class EnemyComponent : MonoBehaviour {
 	{
 		//add coins to player
 		GameObject coins = (GameObject) Instantiate(Resources.Load("CoinDrop"));
+		// position
 		coins.transform.position = transform.position;
+		// coins
+		coins.GetComponent<CoinComponent>().Coins = goldDrop;
+		// boom
 		Destroy(gameObject);
 	}
 

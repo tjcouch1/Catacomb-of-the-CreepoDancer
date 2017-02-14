@@ -151,5 +151,13 @@ public class PlayerController : MonoBehaviour {
 		return ret;
 	}
 
+	void OnTriggerEnter2D(Collider2D other) {
+		GameObject obj = other.gameObject;
+		if(obj.CompareTag("Coins")) {
+			pcc.AddCoins(obj.GetComponent<CoinComponent>().Coins);
+			Destroy(obj);
+		}
+	}
+
 
 }

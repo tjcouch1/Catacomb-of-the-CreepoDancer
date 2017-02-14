@@ -7,7 +7,6 @@ public class GridSpriteTranslate : MonoBehaviour
 	[Range(0f,1f)]
 	public float translateTime = .1f;
 	float translateCurrent = 0f;
-	float currentTime = 0f;
 	Vector3 transformPrev;
 
 	public enum MoveType {NULL, WALK, JUMP};

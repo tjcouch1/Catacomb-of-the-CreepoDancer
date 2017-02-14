@@ -10,7 +10,7 @@ using Dirs = GridMovement.Directions;
 public class BlueSlimeController : MonoBehaviour {
 
 	//path and current position in path
-	int step = 0;
+	public int step = 0;
 	protected Dirs[] dirs = { Dirs.DOWN, Dirs.NULL, Dirs.UP, Dirs.NULL };
 
 	EnemyComponent ec;

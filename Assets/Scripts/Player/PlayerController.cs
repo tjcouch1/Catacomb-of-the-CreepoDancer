@@ -107,7 +107,8 @@ public class PlayerController : MonoBehaviour {
 
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 
-					//check for coins
+					/*
+					//check for coins - old
 					RaycastHit2D hit = Physics2D.Raycast(
 						transform.position, // origin
 						Vector2.up, 		// direction!
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 					{
 						pcc.AddCoins(hit.transform.GetComponent<CoinComponent>().coins);
 						Destroy(hit.transform.gameObject);
-					}
+					}*/
 				}
 			}
 

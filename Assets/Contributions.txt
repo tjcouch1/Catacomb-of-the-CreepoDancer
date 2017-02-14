@@ -38,6 +38,7 @@ TJ Couch
 		+ Stepping Stone
 		+ Coins
 Enemy AI, movement, and combat
+Coins
 Translation between tiles including walking and jumping
 
 

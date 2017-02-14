@@ -101,7 +101,20 @@ public class PlayerController : MonoBehaviour {
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 
-					gst.SetPosition();
+					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+
+					//check for coins
+					RaycastHit2D hit = Physics2D.Raycast(
+						transform.position, // origin
+						Vector2.up, 		// direction!
+						0.1f, 		// Only check this cell unit on Grid
+						LayerMask.GetMask("Coins"));
+
+					if (hit.collider != null)
+					{
+						pcc.AddCoins(hit.transform.GetComponent<CoinComponent>().coins);
+						Destroy(hit.transform.gameObject);
+					}
 				}
 			}
 

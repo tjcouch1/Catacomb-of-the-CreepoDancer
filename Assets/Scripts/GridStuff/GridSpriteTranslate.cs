@@ -7,11 +7,12 @@ public class GridSpriteTranslate : MonoBehaviour
 	[Range(0f,1f)]
 	public float translateTime = .1f;
 	float translateCurrent = 0f;
-	float currentTime = 0f;
 	Vector3 transformPrev;
 
 	public enum MoveType {NULL, WALK, JUMP};
 	float jumpHeight = .5f;
+
+	MoveType currentMoveType = MoveType.JUMP;
 
 	// Use this for initialization
 	void Start()
@@ -23,7 +24,7 @@ public class GridSpriteTranslate : MonoBehaviour
 	void Update()
 	{
 		translateCurrent += Time.deltaTime;
-		SetPosition();
+		SetPosition(currentMoveType);
 	}
 
 	public void StartTranslation()
@@ -39,6 +40,7 @@ public class GridSpriteTranslate : MonoBehaviour
 
 	public void SetPosition(MoveType m)
 	{
+		currentMoveType = m;
 		transform.position = transformPrev + (transform.parent.transform.position - transformPrev) * Mathf.Min(translateCurrent / translateTime, 1);
 		transform.position = new Vector3(transform.position.x, transform.position.y + PathY(m), 0);
 	}

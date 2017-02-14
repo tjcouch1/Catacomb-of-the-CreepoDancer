@@ -39,6 +39,13 @@ public class EnemyComponent : MonoBehaviour {
 		coins.GetComponent<CoinComponent>().Coins = goldDrop;
 		// boom
 		Destroy(gameObject);
+
+		// Increment multiplier. 
+		GameObject controller = GameObject.FindGameObjectsWithTag("Controller")[0];
+		if(controller != null) {
+			CoinMultiplier cm = controller.GetComponent<CoinMultiplier>();
+			cm.AddMult();
+		}
 	}
 
 	public bool Attack(Vector2 offset)

@@ -105,21 +105,10 @@ public class PlayerController : MonoBehaviour {
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 
-					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					// NOTE(clark): Testing hopping here. I really like hopping. 
+					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
 
-					/*
-					//check for coins - old
-					RaycastHit2D hit = Physics2D.Raycast(
-						transform.position, // origin
-						Vector2.up, 		// direction!
-						0.1f, 		// Only check this cell unit on Grid
-						LayerMask.GetMask("Coins"));
-
-					if (hit.collider != null)
-					{
-						pcc.AddCoins(hit.transform.GetComponent<CoinComponent>().coins);
-						Destroy(hit.transform.gameObject);
-					}*/
 				}
 			}
 

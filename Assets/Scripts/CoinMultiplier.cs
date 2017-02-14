@@ -7,11 +7,18 @@ public class CoinMultiplier : MonoBehaviour {
 	float multiplier;
 
 	// Starting multiplier for the coin system
-	[Range(0,10)]
+
+	public GameObject whole;
+	public GameObject fract;
+
+	DigitController w_dig;
+	DigitController f_dig;
+
+	[Range(0,9)]
 	public float MULT_START = 1f;
 
 	// Maximum multiplier
-	[Range(0,10)]
+	[Range(0,9)]
 	public float MULT_MAX = 3f;
 
 	// Amount to increment by
@@ -22,6 +29,9 @@ public class CoinMultiplier : MonoBehaviour {
 	void Start () 
 	{
 		multiplier = MULT_START;
+		w_dig = whole.GetComponent<DigitController>();
+		f_dig = fract.GetComponent<DigitController>();
+		SetGUI();
 	}
 		
 	// Adds an interval to the current multiplier
@@ -33,12 +43,30 @@ public class CoinMultiplier : MonoBehaviour {
 		if(multiplier > MULT_MAX) {
 			multiplier = MULT_MAX;
 		}
+
+		SetGUI();
 	}
 
 	// Sets multuplier to start. Duh.
 	public void Reset() 
 	{
 		multiplier = MULT_START;
+		SetGUI();
+	}
+
+	void SetGUI() 
+	{
+		int i_whole = (int)multiplier;
+		int i_fract = ((int)(multiplier * 10f) % 10);
+		if(w_dig != null) {
+			Debug.Log(i_whole);
+			w_dig.DisplayDigit(i_whole);
+		}
+		if(f_dig != null) {
+			Debug.Log(i_fract);
+			f_dig.DisplayDigit(i_fract);
+		}
+
 	}
 
 	public float GetMult() { return multiplier; }

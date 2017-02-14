@@ -34,6 +34,12 @@ public class PlayerHealthController : MonoBehaviour {
 		if(health <= 0) {
 			loseGame();
 		}
+
+		GameObject controller = GameObject.FindGameObjectsWithTag("Controller")[0];
+		if(controller != null) {
+			CoinMultiplier cm = controller.GetComponent<CoinMultiplier>();
+			cm.Reset();
+		}
 	}
 
 	void redrawUIHearts() 

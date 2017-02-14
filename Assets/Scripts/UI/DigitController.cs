@@ -12,17 +12,19 @@ public class DigitController : MonoBehaviour {
 	Dictionary<int, Sprite> sprite_dict;
 	Image img;
 
-	// Use this for initialization
-	void Start () 
-	{
-		img = GetComponent<Image>();
+	void Awake() {
 		sprite_dict = new Dictionary<int, Sprite>();
 
 		int i = 0;
 		foreach(Sprite spr in digit_sprites) {
 			sprite_dict[i++] = spr;
 		}
-		
+	}
+
+	// Use this for initialization
+	void Start () 
+	{
+		img = GetComponent<Image>();
 		img.sprite = sprite_dict[starting_digit];
 	}
 

@@ -19,6 +19,7 @@ TJ Couch
 		+ Blue Slime
 		+ Gold Slime
 		+ CoinDrop
+		+ EnemySwipe
     -Scripts
 		+ EnemyComponent.cs
 		+ GridSpriteTranslate.cs
@@ -52,35 +53,46 @@ Clark Chambers
 ======================
 - Assets
 	- Prefabs
+		+ ArrowThing
+		+ Cash
+		+ Countdown
+		+ DaggerSwipe
+		+ GameDigit
+		+ GameController
+		+ Heart Variants (Full, half, empty)
 		+ Level 1
 			(Implementation, including collision and art-ripping)
-		+ GameController
+		+ LongswordSwipe
 		+ Main Player
-		+ Cash
-		+ Heart Variants (Full, half, empty)
+		+ Multiplier
+		+ ShopWeapon
+		+ UIDigit
+		+ Weapon
 	- Scenes
 		+ Level 1
 			(Level implementation and collision checking)
 	- Scripts
+		+ AbstractWeapon.cs
+		+ ArrowScript.cs
+		+ BasicImageScalar.cs
+		+ CoinMultiplier.cs
+		+ GameDigitController.cs
+		+ DaggerWeapon.cs
+		+ DigitController.cs
 		+ GridMovement.cs
-		+ PlayerController.cs
 		+ GridEnemyState.cs
 		+ GridUpdateSubscriber.cs
-		+ SimultaneousUpdater.cs
-		+ CoinMultiplier.cs
-		+ WorldTimer.cs
-		+ DigitController.cs
+		+ GunWeapon.cs
+		+ LongswordWeapon.cs
+		+ PickupWeapon.cs
+		+ PriceComponent.cs
+		+ PlayerController.cs
 		+ PlayerCoinController
 		+ PlayerHealthController
-		+ AbstractWeapon.cs
-		+ DaggerWeapon.cs
-		+ LongswordWeapon.cs
-		+ ArrowScript.cs
-		+ GameDigitController.cs
-		+ PickupWeapon.cs
+		+ SimultaneousUpdater.cs
 		+ SinOscelator.cs
 		+ WeaponChanger.cs
-		+ GunWeapon.cs
+		+ WorldTimer.cs
 
 	- Sprites
 		+ Timeglass/Timebar
@@ -101,6 +113,7 @@ External Tools and Assets
 			+ Camera2DFollow. Always a good tool for cameras!
 	- Sprites
 		+ All of them. Stolen. From Crypt of the Necrodancer.
+			+ Addendum: Except a few. 
 
 
 

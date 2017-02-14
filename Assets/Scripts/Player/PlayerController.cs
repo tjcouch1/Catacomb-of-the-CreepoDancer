@@ -23,12 +23,16 @@ public class PlayerController : MonoBehaviour {
 	// Controls the coins of the player!
 	PlayerCoinController pcc;
 
+	// World coin multiplier. 
+	CoinMultiplier wcm;
+
 	// Use this for initialization
 	void Awake () {
 		gm = GetComponent<GridMovement>();
 		smu = updater.GetComponent<SimultaneousUpdater>();
 		wt = updater.GetComponent<WorldTimer>();
 		pcc = GetComponent<PlayerCoinController>();
+		wcm = updater.GetComponent<CoinMultiplier>();
 	}
 
 	void Start() 
@@ -154,7 +158,10 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		GameObject obj = other.gameObject;
 		if(obj.CompareTag("Coins")) {
-			pcc.AddCoins(obj.GetComponent<CoinComponent>().Coins);
+			int coins = obj.GetComponent<CoinComponent>().Coins;
+			coins = (int)((float)coins * wcm.GetMult());
+			pcc.AddCoins(coins);
+
 			Destroy(obj);
 		}
 	}

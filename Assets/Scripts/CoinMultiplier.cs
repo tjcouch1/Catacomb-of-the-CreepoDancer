@@ -59,11 +59,9 @@ public class CoinMultiplier : MonoBehaviour {
 		int i_whole = (int)multiplier;
 		int i_fract = ((int)(multiplier * 10f) % 10);
 		if(w_dig != null) {
-			Debug.Log(i_whole);
 			w_dig.DisplayDigit(i_whole);
 		}
 		if(f_dig != null) {
-			Debug.Log(i_fract);
 			f_dig.DisplayDigit(i_fract);
 		}
 

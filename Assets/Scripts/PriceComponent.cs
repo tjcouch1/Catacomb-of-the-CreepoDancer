@@ -7,6 +7,7 @@ public class PriceComponent : MonoBehaviour {
 	[Range(0,999)]
 	public int price;
 
+	public GameObject shopkeep;
 	public GameObject hund;
 	public GameObject tens;
 	public GameObject ones;
@@ -24,5 +25,10 @@ public class PriceComponent : MonoBehaviour {
 	}
 	
 	public int GetPrice() { return price; }
+
+	public void SayThanks() 
+	{
+		shopkeep.GetComponent<ShopkeeperComponent>().Thank();
+	}
 
 }

@@ -61,7 +61,9 @@ public class PickupWeapon : MonoBehaviour {
 				}
 				// Pay for the cost. 
 				obj.GetComponent<PlayerCoinController>().RemoveCoins(obj_price);
-				// Get rid of the price component. We'll deal with this later. 
+				
+				// Makes shopkeeper say thank you!
+				price.GetComponent<PriceComponent>().SayThanks();
 				Destroy(price);
 			}
 

@@ -65,7 +65,9 @@ Clark Chambers
 		+ LongswordSwipe
 		+ Main Player
 		+ Multiplier
+		+ Shop
 		+ ShopWeapon
+		+ ThankYou
 		+ UIDigit
 		+ Weapon
 	- Scenes
@@ -87,8 +89,9 @@ Clark Chambers
 		+ PickupWeapon.cs
 		+ PriceComponent.cs
 		+ PlayerController.cs
-		+ PlayerCoinController
-		+ PlayerHealthController
+		+ PlayerCoinController.cs
+		+ PlayerHealthController.cs
+		+ ShopkeeperComponent.cs
 		+ SimultaneousUpdater.cs
 		+ SinOscelator.cs
 		+ WeaponChanger.cs

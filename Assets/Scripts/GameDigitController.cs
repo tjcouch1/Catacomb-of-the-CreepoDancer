@@ -10,17 +10,20 @@ public class GameDigitController : MonoBehaviour {
 	Dictionary<int, Sprite> sprite_dict;
 	SpriteRenderer img;
 
-	// Use this for initialization
-	void Start () 
+	void Awake() 
 	{
 		img = GetComponent<SpriteRenderer>();
-		sprite_dict = new Dictionary<int, Sprite>();
 
+		sprite_dict = new Dictionary<int, Sprite>();
 		int i = 0;
 		foreach(Sprite spr in digit_sprites) {
 			sprite_dict[i++] = spr;
 		}
-		
+	}
+
+	// Use this for initialization
+	void Start () 
+	{
 		img.sprite = sprite_dict[starting_digit];
 	}
 

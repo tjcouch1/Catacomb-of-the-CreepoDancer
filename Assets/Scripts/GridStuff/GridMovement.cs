@@ -28,6 +28,16 @@ public class GridMovement : MonoBehaviour {
 		return CanMove(dir, LayerMask.GetMask("Level", "Enemies"));
 	}
 
+	public bool IsStones(Directions dir) 
+	{
+		return CanMove(dir, LayerMask.GetMask("Stones"));
+	}
+
+	public bool IsWater(Directions dir) 
+	{
+		return CanMove(dir, LayerMask.GetMask("Water"));
+	}
+
 	public bool CanMoveEnemy(Directions dir) 
 	{
 		return CanMove(dir, LayerMask.GetMask("Level", "Player"));
@@ -39,9 +49,9 @@ public class GridMovement : MonoBehaviour {
 			return false;
 		}
 		// Shoot out a ray to check for a collision with the level layer. 
-		RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
-											 DirTable[dir], 				// Lookup table (direction)!
-											 1f, 							// Only 1 unit Grid
+		RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)DirTable[dir], 			// origin
+											 Vector3.up, 				// Lookup table (direction)!
+											 0.1f, 							// Only 1 unit Grid
 											 lay); 	// Only on this layer
 
 		// If null, no collision! Yay!

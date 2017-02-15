@@ -8,7 +8,9 @@ using Dirs = GridMovement.Directions;
 public class PlayerController : MonoBehaviour {
 
 	// Gamd updater
+	public GameObject body;
 	public GameObject updater;
+
 
 	// Sends messages
 	public GameObject weaponSprite;
@@ -22,9 +24,14 @@ public class PlayerController : MonoBehaviour {
 	AbstractWeapon weapon;
 	// Controls the coins of the player!
 	PlayerCoinController pcc;
-
 	// World coin multiplier. 
 	CoinMultiplier wcm;
+	// Translator
+	GridSpriteTranslate gst;
+
+	// Animator reference
+	Animator anim;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -33,6 +40,8 @@ public class PlayerController : MonoBehaviour {
 		wt = updater.GetComponent<WorldTimer>();
 		pcc = GetComponent<PlayerCoinController>();
 		wcm = updater.GetComponent<CoinMultiplier>();
+		gst = GetComponentInChildren<GridSpriteTranslate>();
+		anim = body.GetComponent<Animator>();
 	}
 
 	void Start() 
@@ -98,17 +107,67 @@ public class PlayerController : MonoBehaviour {
 
 			// returns false is there was no enemy to attack.
 			if(!attacked){
-				if(gm.CanMovePlayer(dir)) {
-					
-					GridSpriteTranslate gst = GetComponentInChildren<GridSpriteTranslate>();
+
+				if(!gm.IsStones(dir)) {
 					gst.StartTranslation();
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 
 					// NOTE(clark): Testing hopping here. I really like hopping. 
 					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
-					gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
+					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					anim.SetTrigger("Walk");
+				}
 
+				// This is an ugly block. Really brute force. OH WELL 
+				else if(!gm.IsWater(dir)) {
+
+					// Shoot out a ray to check for a collision with the level layer. 
+					RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)(GridMovement.DirTable[dir] * 2), 			// origin
+														 Vector3.up, 				// Lookup table (direction)!
+														 0.1f, 							// Only 1 unit Grid
+														 LayerMask.GetMask("Stones")); 	// Only on this layer
+
+			        if(hit.collider != null) {
+			        	gst.StartTranslation();
+
+						transform.position += ((Vector3)GridMovement.DirTable[dir] * 2);
+
+						// NOTE(clark): Testing hopping here. I really like hopping. 
+						// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+						gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
+						anim.SetTrigger("Jump");
+			        }
+			        else {
+			        	// Shoot out a ray to check for a collision with the level layer. 
+						hit = Physics2D.Raycast(transform.position + (Vector3)(GridMovement.DirTable[dir] * 2), 			// origin
+															 Vector3.up, 				// Lookup table (direction)!
+															 0.1f, 							// Only 1 unit Grid
+															 LayerMask.GetMask("Water")); 	// Only on this layer
+						// NO water
+						if(hit.collider == null) {
+				        	gst.StartTranslation();
+
+							transform.position += ((Vector3)GridMovement.DirTable[dir] * 2);
+
+							// NOTE(clark): Testing hopping here. I really like hopping. 
+							// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+							gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
+							anim.SetTrigger("Jump");
+				        }
+			        }
+				}
+
+				else if(gm.CanMovePlayer(dir)) {
+					
+					gst.StartTranslation();
+
+					transform.position += (Vector3)GridMovement.DirTable[dir];
+
+					// NOTE(clark): Testing hopping here. I really like hopping. 
+					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					anim.SetTrigger("Walk");
 				}
 			}
 

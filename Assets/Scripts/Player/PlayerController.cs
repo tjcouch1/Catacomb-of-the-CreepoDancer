@@ -108,9 +108,7 @@ public class PlayerController : MonoBehaviour {
 			// returns false is there was no enemy to attack.
 			if(!attacked){
 
-
-				if(gm.CanMovePlayer(dir)) {
-					
+				if(!gm.IsStones(dir)) {
 					gst.StartTranslation();
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
@@ -120,6 +118,7 @@ public class PlayerController : MonoBehaviour {
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					anim.SetTrigger("Walk");
 				}
+
 				// This is an ugly block. Really brute force. OH WELL 
 				else if(!gm.IsWater(dir)) {
 
@@ -159,7 +158,17 @@ public class PlayerController : MonoBehaviour {
 			        }
 				}
 
-				
+				else if(gm.CanMovePlayer(dir)) {
+					
+					gst.StartTranslation();
+
+					transform.position += (Vector3)GridMovement.DirTable[dir];
+
+					// NOTE(clark): Testing hopping here. I really like hopping. 
+					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					anim.SetTrigger("Walk");
+				}
 			}
 
 			// NOTE(clark): Did stuff

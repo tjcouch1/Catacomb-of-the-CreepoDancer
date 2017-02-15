@@ -28,6 +28,11 @@ public class GridMovement : MonoBehaviour {
 		return CanMove(dir, LayerMask.GetMask("Level", "Enemies"));
 	}
 
+	public bool IsStones(Directions dir) 
+	{
+		return CanMove(dir, LayerMask.GetMask("Stones"));
+	}
+
 	public bool IsWater(Directions dir) 
 	{
 		return CanMove(dir, LayerMask.GetMask("Water"));

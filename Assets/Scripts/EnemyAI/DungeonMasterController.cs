@@ -50,9 +50,7 @@ public class DungeonMasterController : MonoBehaviour {
 		gms.SetMovementMethod(new GridMovementSubscriber.MovementMethod(SubMovement));
 		gms.SetAttackMethod(new GridMovementSubscriber.AttackMethod(SubAttack));
 
-
-		//NOTE TO TJ LOOKY HERE!!!!!! Change to FindWithTag("Player") when player's tag gets set
-		player = GameObject.Find("MainPlayer");
+		player = GameObject.FindWithTag("Player");
 	}
 
 	// Subscriber method. 

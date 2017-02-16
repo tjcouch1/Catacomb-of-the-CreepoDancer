@@ -20,6 +20,8 @@ TJ Couch
 		+ Gold Slime
 		+ CoinDrop
 		+ EnemySwipe
+		+ Skeleton
+		+ Dungeon Master
     -Scripts
 		+ EnemyComponent.cs
 		+ GridSpriteTranslate.cs
@@ -27,6 +29,8 @@ TJ Couch
         + BlueSlimeController.cs
 		+ GoldSlimeController.cs
 		+ CoinComponent.cs
+		+ SkeletonController.cs
+		+ DungeonMasterController.cs
 		
 	-Visuals
 		+ Translation between tiles
@@ -38,6 +42,9 @@ TJ Couch
 		+ Enemy Swipe
 		+ Stepping Stone
 		+ Coins
+		+ Player walk and jump
+		+ Skeleton
+		+ Dungeon Master
 Enemy AI, movement, and combat
 Coins
 Translation between tiles including walking and jumping

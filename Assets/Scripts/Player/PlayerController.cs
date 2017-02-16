@@ -62,25 +62,25 @@ public class PlayerController : MonoBehaviour {
 		Dirs dir = Dirs.NULL;
 
 
-		// TEST CODE
-		if(Input.GetKeyDown(KeyCode.D)) {
-			Debug.Log("Equipped dagger!");
-			SetWeapon<DaggerWeapon>();
-		}
-		if(Input.GetKeyDown(KeyCode.S)) {
-			Debug.Log("Equipped Longsword!");
-			SetWeapon<LongswordWeapon>();
-		}
-		if(Input.GetKeyDown(KeyCode.A)) {
-			Debug.Log("Equipped GUN!");
-			SetWeapon<GunWeapon>();
-		}
+		// // TEST CODE
 		// if(Input.GetKeyDown(KeyCode.D)) {
-		// 	GetComponent<PlayerHealthController>().DealDamage(1);
+		// 	Debug.Log("Equipped dagger!");
+		// 	SetWeapon<DaggerWeapon>();
 		// }
-		if(Input.GetKeyDown(KeyCode.E)) {
-			pcc.AddCoins(20);
-		}
+		// if(Input.GetKeyDown(KeyCode.S)) {
+		// 	Debug.Log("Equipped Longsword!");
+		// 	SetWeapon<LongswordWeapon>();
+		// }
+		// if(Input.GetKeyDown(KeyCode.A)) {
+		// 	Debug.Log("Equipped GUN!");
+		// 	SetWeapon<GunWeapon>();
+		// }
+		// // if(Input.GetKeyDown(KeyCode.D)) {
+		// // 	GetComponent<PlayerHealthController>().DealDamage(1);
+		// // }
+		// if(Input.GetKeyDown(KeyCode.E)) {
+		// 	pcc.AddCoins(20);
+		// }
 
 		// Rightwards Movement
 		if(Input.GetKeyDown(KeyCode.RightArrow)){

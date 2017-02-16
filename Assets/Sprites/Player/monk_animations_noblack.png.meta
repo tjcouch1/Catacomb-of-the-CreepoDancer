@@ -1,21 +1,21 @@
 fileFormatVersion: 2
-guid: f3c1b94ccd696448d8a0246c70c29a17
-timeCreated: 1487184394
+guid: 23a29192145d94316a9845dfb3adc742
+timeCreated: 1487260217
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: monk_animations_0
-    21300002: monk_animations_1
-    21300004: monk_animations_2
-    21300006: monk_animations_3
-    21300008: monk_animations_4
-    21300010: monk_animations_5
-    21300012: monk_animations_6
-    21300014: monk_animations_7
-    21300016: monk_animations_8
-    21300018: monk_animations_9
-    21300020: monk_animations_10
-    21300022: monk_animations_11
+    21300000: monk_animations_noblack_0
+    21300002: monk_animations_noblack_1
+    21300004: monk_animations_noblack_2
+    21300006: monk_animations_noblack_3
+    21300008: monk_animations_noblack_4
+    21300010: monk_animations_noblack_5
+    21300012: monk_animations_noblack_6
+    21300014: monk_animations_noblack_7
+    21300016: monk_animations_noblack_8
+    21300018: monk_animations_noblack_9
+    21300020: monk_animations_noblack_10
+    21300022: monk_animations_noblack_11
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -82,7 +82,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monk_animations_0
+      name: monk_animations_noblack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -95,7 +95,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_1
+      name: monk_animations_noblack_1
       rect:
         serializedVersion: 2
         x: 24
@@ -108,7 +108,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_2
+      name: monk_animations_noblack_2
       rect:
         serializedVersion: 2
         x: 48
@@ -121,7 +121,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_3
+      name: monk_animations_noblack_3
       rect:
         serializedVersion: 2
         x: 72
@@ -134,7 +134,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_4
+      name: monk_animations_noblack_4
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +147,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_5
+      name: monk_animations_noblack_5
       rect:
         serializedVersion: 2
         x: 24
@@ -160,7 +160,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_6
+      name: monk_animations_noblack_6
       rect:
         serializedVersion: 2
         x: 48
@@ -173,7 +173,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_7
+      name: monk_animations_noblack_7
       rect:
         serializedVersion: 2
         x: 72
@@ -186,7 +186,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_8
+      name: monk_animations_noblack_8
       rect:
         serializedVersion: 2
         x: 0
@@ -199,7 +199,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_9
+      name: monk_animations_noblack_9
       rect:
         serializedVersion: 2
         x: 24
@@ -212,7 +212,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_10
+      name: monk_animations_noblack_10
       rect:
         serializedVersion: 2
         x: 48
@@ -225,7 +225,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_animations_11
+      name: monk_animations_noblack_11
       rect:
         serializedVersion: 2
         x: 72

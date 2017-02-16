@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Gamd updater
 	public GameObject body;
+	public GameObject head;
 	public GameObject updater;
 
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Animator reference
 	Animator anim;
+	// Brute force thing to keep sprites in sync. 
+	Animator anim_head;
 
 
 	// Use this for initialization
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour {
 		wcm = updater.GetComponent<CoinMultiplier>();
 		gst = GetComponentInChildren<GridSpriteTranslate>();
 		anim = body.GetComponent<Animator>();
+		anim_head = head.GetComponent<Animator>();
 	}
 
 	void Start() 
@@ -115,9 +119,11 @@ public class PlayerController : MonoBehaviour {
 
 					// NOTE(clark): Testing hopping here. I really like hopping. 
 					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
-					Debug.Log("Stones");
+
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					anim.SetTrigger("Walk");
+					anim_head.SetTrigger("RESET");
+
 				}
 
 				// This is an ugly block. Really brute force. OH WELL 
@@ -137,9 +143,8 @@ public class PlayerController : MonoBehaviour {
 						// NOTE(clark): Testing hopping here. I really like hopping. 
 						// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 						gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
-						Debug.Log("Stones");
-
 						anim.SetTrigger("Jump");
+						anim_head.SetTrigger("RESET");
 			        }
 			        else {
 			        	// Shoot out a ray to check for a collision with the level layer. 
@@ -157,8 +162,7 @@ public class PlayerController : MonoBehaviour {
 							// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 							gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
 							anim.SetTrigger("Jump");
-							Debug.Log("Land");
-
+							anim_head.SetTrigger("RESET");
 				        }
 			        }
 				}
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour {
 					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					anim.SetTrigger("Walk");
-					Debug.Log("Land");
+					anim_head.SetTrigger("RESET");
 				}
 			}
 

@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 9a7d4924c6cef47058569161e2a84194
-timeCreated: 1487184362
+guid: 5f6aa424bb32142f2ae519da5f863969
+timeCreated: 1487260192
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: monk_head_0
-    21300002: monk_head_1
-    21300004: monk_head_2
-    21300006: monk_head_3
+    21300000: monk_head_noblack_0
+    21300002: monk_head_noblack_1
+    21300004: monk_head_noblack_2
+    21300006: monk_head_noblack_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -74,7 +74,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monk_head_0
+      name: monk_head_noblack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -87,7 +87,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_head_1
+      name: monk_head_noblack_1
       rect:
         serializedVersion: 2
         x: 24
@@ -100,7 +100,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_head_2
+      name: monk_head_noblack_2
       rect:
         serializedVersion: 2
         x: 48
@@ -113,7 +113,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: monk_head_3
+      name: monk_head_noblack_3
       rect:
         serializedVersion: 2
         x: 72

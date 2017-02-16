@@ -108,19 +108,20 @@ public class PlayerController : MonoBehaviour {
 			// returns false is there was no enemy to attack.
 			if(!attacked){
 
-				if(!gm.IsStones(dir)) {
+				if(gm.IsStones(dir)) {
 					gst.StartTranslation();
 
 					transform.position += (Vector3)GridMovement.DirTable[dir];
 
 					// NOTE(clark): Testing hopping here. I really like hopping. 
 					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
+					Debug.Log("Stones");
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					anim.SetTrigger("Walk");
 				}
 
 				// This is an ugly block. Really brute force. OH WELL 
-				else if(!gm.IsWater(dir)) {
+				else if(gm.IsWater(dir)) {
 
 					// Shoot out a ray to check for a collision with the level layer. 
 					RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)(GridMovement.DirTable[dir] * 2), 			// origin
@@ -136,6 +137,8 @@ public class PlayerController : MonoBehaviour {
 						// NOTE(clark): Testing hopping here. I really like hopping. 
 						// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 						gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
+						Debug.Log("Stones");
+
 						anim.SetTrigger("Jump");
 			        }
 			        else {
@@ -154,6 +157,8 @@ public class PlayerController : MonoBehaviour {
 							// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 							gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
 							anim.SetTrigger("Jump");
+							Debug.Log("Land");
+
 				        }
 			        }
 				}
@@ -168,6 +173,7 @@ public class PlayerController : MonoBehaviour {
 					// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 					anim.SetTrigger("Walk");
+					Debug.Log("Land");
 				}
 			}
 

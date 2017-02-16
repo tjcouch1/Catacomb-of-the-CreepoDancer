@@ -16,5 +16,5 @@ public class ChangeMusic : MonoBehaviour {
 			source.clip = level1Music;
 			source.Play();
 		}
-}
+	}
 }

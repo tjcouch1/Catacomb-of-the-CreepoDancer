@@ -30,12 +30,12 @@ public class GridMovement : MonoBehaviour {
 
 	public bool IsStones(Directions dir) 
 	{
-		return CanMove(dir, LayerMask.GetMask("Stones"));
+		return !CanMove(dir, LayerMask.GetMask("Stones"));
 	}
 
 	public bool IsWater(Directions dir) 
 	{
-		return CanMove(dir, LayerMask.GetMask("Water"));
+		return !CanMove(dir, LayerMask.GetMask("Water"));
 	}
 
 	public bool CanMoveEnemy(Directions dir) 

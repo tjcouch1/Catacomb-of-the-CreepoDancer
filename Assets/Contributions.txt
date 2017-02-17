@@ -14,7 +14,9 @@ TJ Couch
 - Assets
 	- Prefabs
 		+ Level 1
-			(Design)
+			(Design, Enemy placement, and coin-drop calculation)
+		+ Level 2
+			(Design, Enemy placement, and coin-drop calculation)
 		+ Green Slime
 		+ Blue Slime
 		+ Gold Slime
@@ -80,14 +82,18 @@ Clark Chambers
 	- Scenes
 		+ Level 1
 			(Level implementation and collision checking)
+		+ Level 2
+			(Level Implementation adn collision checking)
 	- Scripts
 		+ AbstractWeapon.cs
 		+ ArrowScript.cs
 		+ BasicImageScalar.cs
+		+ CoinAudio.cs
 		+ CoinMultiplier.cs
 		+ GameDigitController.cs
 		+ DaggerWeapon.cs
 		+ DigitController.cs
+		+ EntityAudioController.cs
 		+ GridMovement.cs
 		+ GridEnemyState.cs
 		+ GridUpdateSubscriber.cs

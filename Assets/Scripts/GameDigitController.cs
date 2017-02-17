@@ -19,11 +19,6 @@ public class GameDigitController : MonoBehaviour {
 		foreach(Sprite spr in digit_sprites) {
 			sprite_dict[i++] = spr;
 		}
-	}
-
-	// Use this for initialization
-	void Start () 
-	{
 		img.sprite = sprite_dict[starting_digit];
 	}
 

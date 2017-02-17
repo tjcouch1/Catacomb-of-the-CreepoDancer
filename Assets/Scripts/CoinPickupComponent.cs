@@ -23,9 +23,11 @@ public class CoinPickupComponent : MonoBehaviour {
 	public void SetCoins(int c)
 	{
 		coins = c;
-
+		Debug.Log(coins/100);
 		hund.GetComponent<GameDigitController>().DisplayDigit(coins / 100);
+		Debug.Log((coins % 100) / 10);
 		tens.GetComponent<GameDigitController>().DisplayDigit((coins % 100) / 10);
+		Debug.Log(coins % 10);
 		ones.GetComponent<GameDigitController>().DisplayDigit(coins % 10);
 	}
 

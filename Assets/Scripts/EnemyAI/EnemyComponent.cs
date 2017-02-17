@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Dirs = GridMovement.Directions;
 
+[RequireComponent(typeof(EntityAudioController))]
 public class EnemyComponent : MonoBehaviour {
 
 	bool dead = false;
@@ -18,6 +19,13 @@ public class EnemyComponent : MonoBehaviour {
 	public int attackPower;
 	int health;
 
+	EntityAudioController eac;
+
+	void Awake() 
+	{
+		eac = GetComponent<EntityAudioController>();
+	}
+
 	// Use this for initialization
 	void Start () {
 		health = maxHealth;
@@ -28,6 +36,9 @@ public class EnemyComponent : MonoBehaviour {
 		health -= dmg;
 		if(health <= 0) {
 			Die();
+		}
+		else {
+			eac.PlayHurt();
 		}
 	}
 
@@ -41,6 +52,8 @@ public class EnemyComponent : MonoBehaviour {
 		coins.GetComponent<CoinComponent>().Coins = goldDrop;
 
 		dead = true;
+
+		eac.PlayDie();
 
 		// boom
 		Destroy(gameObject);

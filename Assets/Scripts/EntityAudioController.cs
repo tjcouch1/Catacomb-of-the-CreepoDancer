@@ -5,15 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class EntityAudioController : MonoBehaviour {
 
-	public AudioClip hurt_sound;
+	public List<AudioClip> hurt_sounds;
 	[Range(0,1)]
 	public float hurt_vol;
 
-	public AudioClip attack_sound;
+	public List<AudioClip> attack_sounds;
 	[Range(0,1)]
 	public float attack_vol;
 
-	public AudioClip die_sound;
+	public List<AudioClip> die_sounds;
 	[Range(0,1)]
 	public float die_vol;
 	
@@ -34,19 +34,22 @@ public class EntityAudioController : MonoBehaviour {
 
 	public void PlayDie() 
 	{
-		load_sound(die_sound, die_vol);
+		int idx = Random.Range(0, die_sounds.Count);
+		load_sound(die_sounds[idx], die_vol);
 		a_source.Play();
 	}
 
 	public void PlayHurt() 
 	{
-		load_sound(hurt_sound, hurt_vol);
+		int idx = Random.Range(0, hurt_sounds.Count);
+		load_sound(hurt_sounds[idx], hurt_vol);
 		a_source.Play();
 	}
 
 	public void PlayAttack() 
 	{
-		load_sound(attack_sound, attack_vol);
+		int idx = Random.Range(0, attack_sounds.Count);
+		load_sound(attack_sounds[idx], attack_vol);
 		a_source.Play();
 	}
 

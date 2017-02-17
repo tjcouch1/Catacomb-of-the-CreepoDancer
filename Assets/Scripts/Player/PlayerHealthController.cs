@@ -14,11 +14,15 @@ public class PlayerHealthController : MonoBehaviour {
 	int max_health;
 	int health;
 
+	// Audio Controller for player. 
+	EntityAudioController eac;
+
 	// Use this for initialization
 	void Awake () 
 	{
 		max_health = STARTING_HEALTH + (STARTING_HEALTH % 2); // Make max divisible by 2. 
 		health = STARTING_HEALTH;
+		eac = GetComponent<EntityAudioController>();
 	}
 
 	void Start() 
@@ -31,6 +35,8 @@ public class PlayerHealthController : MonoBehaviour {
 		// Recalculate health and UI
 		health -= dmg;
 		redrawUIHearts();
+		eac.PlayHurt();
+
 		if(health <= 0) {
 			loseGame();
 		}
@@ -73,6 +79,7 @@ public class PlayerHealthController : MonoBehaviour {
 
 	void loseGame() 
 	{
+		eac.PlayDie();
 		// LOSE THE GAME HERE.
 	}
 }

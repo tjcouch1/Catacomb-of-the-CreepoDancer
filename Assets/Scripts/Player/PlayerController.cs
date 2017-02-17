@@ -113,9 +113,11 @@ public class PlayerController : MonoBehaviour {
 			wt.Reset();
 
 			bool attacked = weapon.Attack(dir); // Attack in the given direction
-
+			if(attacked) {
+				eac.PlayAttack();
+			}
 			// returns false is there was no enemy to attack.
-			if(!attacked){
+			else {
 
 				if(gm.IsStones(dir)) {
 					gst.StartTranslation();

@@ -38,6 +38,7 @@ public class EnemyComponent : MonoBehaviour {
 			Die();
 		}
 		else {
+			// Hurt sound
 			eac.PlayHurt();
 		}
 	}
@@ -52,9 +53,9 @@ public class EnemyComponent : MonoBehaviour {
 		coins.GetComponent<CoinComponent>().Coins = goldDrop;
 
 		dead = true;
-
+		// Die sound
 		eac.PlayDie();
-
+		
 		// boom
 		Destroy(gameObject);
 
@@ -69,6 +70,7 @@ public class EnemyComponent : MonoBehaviour {
 	public bool Attack(Vector2 offset)
 	{
 		if(!dead){
+			// Attack sound
 			// Check the grid position for the player. 
 			RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3)offset, 	// origin
 												 Vector2.up, 			// Lookup table (direction)!
@@ -81,6 +83,7 @@ public class EnemyComponent : MonoBehaviour {
 				PlayerHealthController phc = hit.collider.gameObject.GetComponent<PlayerHealthController>();
 				if(phc != null) {
 					phc.DealDamage(attackPower);
+					eac.PlayAttack();
 
 					// Direction
 					Vector2 vdir = offset;
@@ -103,5 +106,4 @@ public class EnemyComponent : MonoBehaviour {
 			return false;
 		}
 	}
-	
 }

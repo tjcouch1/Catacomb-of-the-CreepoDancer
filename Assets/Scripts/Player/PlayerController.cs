@@ -78,9 +78,9 @@ public class PlayerController : MonoBehaviour {
 		// // if(Input.GetKeyDown(KeyCode.D)) {
 		// // 	GetComponent<PlayerHealthController>().DealDamage(1);
 		// // }
-		// if(Input.GetKeyDown(KeyCode.E)) {
-		// 	pcc.AddCoins(20);
-		// }
+		if(Input.GetKeyDown(KeyCode.E)) {
+			pcc.AddCoins(20);
+		}
 
 		// Rightwards Movement
 		if(Input.GetKeyDown(KeyCode.RightArrow)){

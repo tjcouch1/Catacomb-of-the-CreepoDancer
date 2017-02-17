@@ -15,6 +15,7 @@ TJ Couch
 	- Prefabs
 		+ Level 1
 			(Design)
+			Enemy Placement
 		+ Green Slime
 		+ Blue Slime
 		+ Gold Slime
@@ -22,6 +23,7 @@ TJ Couch
 		+ EnemySwipe
 		+ Skeleton
 		+ Dungeon Master
+		+ CoinPickup
     -Scripts
 		+ EnemyComponent.cs
 		+ GridSpriteTranslate.cs
@@ -31,9 +33,12 @@ TJ Couch
 		+ CoinComponent.cs
 		+ SkeletonController.cs
 		+ DungeonMasterController.cs
+		+ CoinPickupComponent.cs
 		
 	-Visuals
 		+ Translation between tiles
+			+ Walking
+			+ Jumping
 	
 	-Sprites
 		+ Green Slime
@@ -42,12 +47,12 @@ TJ Couch
 		+ Enemy Swipe
 		+ Stepping Stone
 		+ Coins
-		+ Player walk and jump
+		+ Player
+		  + Walk Animation
+		  + Jump Animation
 		+ Skeleton
 		+ Dungeon Master
 Enemy AI, movement, and combat
-Coins
-Translation between tiles including walking and jumping
 
 
 Molly Sulcer

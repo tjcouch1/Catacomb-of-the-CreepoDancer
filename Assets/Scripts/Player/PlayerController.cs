@@ -242,6 +242,11 @@ public class PlayerController : MonoBehaviour {
 			pcc.AddCoins(coins);
 
 			Destroy(obj);
+
+			GameObject pickup = (GameObject) Instantiate(Resources.Load("CoinPickup"));
+			pickup.transform.position = new Vector3(transform.position.x + .75f, transform.position.y, transform.position.z);
+			pickup.GetComponent<CoinPickupComponent>().SetCoins(coins);
+
 		}
 	}
 

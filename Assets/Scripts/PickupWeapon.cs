@@ -19,6 +19,10 @@ public class PickupWeapon : MonoBehaviour {
 	public Sprite long_sprite;
 	public Sprite gun_sprite;
 
+	public AudioClip pickup_sound;
+	[Range(0,1)]
+	public float pickup_vol;
+
 	void Awake() 
 	{
 		floaty_sr = floaty.GetComponent<SpriteRenderer>();
@@ -68,6 +72,8 @@ public class PickupWeapon : MonoBehaviour {
 			}
 
 			Debug.Log("Equipping new weapon");
+			AudioSource.PlayClipAtPoint(pickup_sound, transform.position, pickup_vol);
+
 
 			string ret = "null";
 			switch(type) {

@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour {
 	// Sends messages
 	public GameObject weaponSprite;
 	// Utility GridMovement component
+
+	public List<AudioClip> jump_sounds;
+	[Range(0,1)]
+	public float jump_vol;
+
 	GridMovement gm;
 	// World simultaneous updater
 	SimultaneousUpdater smu;
@@ -147,6 +152,10 @@ public class PlayerController : MonoBehaviour {
 
 						transform.position += ((Vector3)GridMovement.DirTable[dir] * 2);
 
+						// Play jump noise
+						int idx = Random.Range(0, jump_sounds.Count);
+						AudioSource.PlayClipAtPoint(jump_sounds[idx], transform.position, jump_vol);
+
 						// NOTE(clark): Testing hopping here. I really like hopping. 
 						// gst.SetPosition(GridSpriteTranslate.MoveType.WALK);
 						gst.SetPosition(GridSpriteTranslate.MoveType.JUMP);
@@ -237,9 +246,12 @@ public class PlayerController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		GameObject obj = other.gameObject;
 		if(obj.CompareTag("Coins")) {
-			int coins = obj.GetComponent<CoinComponent>().Coins;
+			CoinComponent coinComponent = obj.GetComponent<CoinComponent>();
+			int coins = coinComponent.Coins;
 			coins = (int)((float)coins * wcm.GetMult());
 			pcc.AddCoins(coins);
+			// Play coin pickup sounds.
+			coinComponent.PlaySound();
 
 			Destroy(obj);
 		}

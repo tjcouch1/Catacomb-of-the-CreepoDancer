@@ -8,6 +8,10 @@ public class CoinComponent : MonoBehaviour {
 	public int coins = 1;
 	Animator anim;
 
+	public List<AudioClip> coin_clips;
+	[Range(0, 1)] 
+	public float vol;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator>();
@@ -43,5 +47,11 @@ public class CoinComponent : MonoBehaviour {
 	public int Coins {
 		get { return coins; }
 		set { coins = value; }
+	}
+
+	public void PlaySound() 
+	{
+		int idx = Random.Range(0, coin_clips.Count);
+		AudioSource.PlayClipAtPoint(coin_clips[idx], transform.position, vol);
 	}
 }

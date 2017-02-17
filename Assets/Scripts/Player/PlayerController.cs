@@ -4,6 +4,7 @@ using UnityEngine;
 
 using Dirs = GridMovement.Directions;
 
+[RequireComponent(typeof(EntityAudioController))]
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
 
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour {
 	CoinMultiplier wcm;
 	// Translator
 	GridSpriteTranslate gst;
+	// Audio Controller for player. 
+	EntityAudioController eac;
+	
 
 	// Animator reference
 	Animator anim;
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 		gst = GetComponentInChildren<GridSpriteTranslate>();
 		anim = body.GetComponent<Animator>();
 		anim_head = head.GetComponent<Animator>();
+		eac = GetComponent<EntityAudioController>();
 	}
 
 	void Start() 

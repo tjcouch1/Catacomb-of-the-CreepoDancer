@@ -3,20 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeMusic : MonoBehaviour {
-	public AudioClip level1Music;
-	private AudioSource source;	
-
-	// Use this for initialization
-	void Awake () {
-		source = GetComponent<AudioSource> ();
-	}
-	// void OnLevelWasLoaded(int level){
-	// 	if (level == 1) {
-	// 		source.clip = level1Music;
-	// 		source.Play();
-	// 	}
-	// }
+[RequireComponent(typeof(DontDestroy))]
+public class UniqueDontDestroy : MonoBehaviour {
+	public string base_scene;
+	bool OG = false;
 
 	void OnEnable()
 	{
@@ -32,9 +22,16 @@ public class ChangeMusic : MonoBehaviour {
 
 	void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
 	{
-		if(scene.name == "Level1") {
-			source.clip = level1Music;
-			source.Play();
+		if(scene.name == base_scene) {	
+			GameObject[] controllers = GameObject.FindGameObjectsWithTag("BackgroundMusicController");
+			if(controllers.Length > 1) {
+				if(!OG) {
+					Destroy(gameObject);
+				}
+			}
+			else {
+				OG = true;
+			}
 		}
 	}
 }

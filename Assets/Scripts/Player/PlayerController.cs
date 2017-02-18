@@ -260,6 +260,13 @@ public class PlayerController : MonoBehaviour {
 			pickup.GetComponent<CoinPickupComponent>().SetCoins(coins);
 
 		}
+		else if (obj.CompareTag("Stairs"))
+		{
+			if (obj.GetComponent<StairController>().IsUnlocked())
+			{
+				//@Molly: go to the next scene
+			}
+		}
 	}
 
 

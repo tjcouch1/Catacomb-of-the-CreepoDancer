@@ -65,7 +65,7 @@ public class SkeletonController : MonoBehaviour {
 			dir = Dirs.NULL;
 			Vector2 distToPlayer = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
 			if (distToPlayer.magnitude < maxDist)
-				if (distToPlayer.magnitude > .5)
+				if (distToPlayer.magnitude > .05)
 				{
 					if (Mathf.Abs(distToPlayer.x) >= Mathf.Abs(distToPlayer.y))
 					{

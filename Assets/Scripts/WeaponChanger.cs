@@ -13,6 +13,7 @@ public class WeaponChanger : MonoBehaviour {
 
 	void Awake() 
 	{
+		DontDestroyOnLoad(gameObject); //testing
 		img = GetComponent<Image>();
 	}
 	

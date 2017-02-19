@@ -58,7 +58,23 @@ Enemy AI, movement, and combat
 
 Molly Sulcer
 =======================
-- Assets
+-Assets
+	-Prefabs
+		+BackgroundMusic
+	-Scenes
+		+ MainMenu-Audio, Visual, Functions
+		+ Story
+		+ Help
+		+ DeathScence
+	-Scripts
+		+ ChangeMusic.cs
+		+ DontDestroy.cs
+		+ LoadOnClick.cs
+		+ UniqueDontDestroy
+		+ ButtonNavigation
+		+ PlayerController (staircase and scene transition)
+		+ StairController
+
 
 
 

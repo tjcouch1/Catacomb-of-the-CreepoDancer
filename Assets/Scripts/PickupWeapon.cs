@@ -26,6 +26,7 @@ public class PickupWeapon : MonoBehaviour {
 	void Awake() 
 	{
 		floaty_sr = floaty.GetComponent<SpriteRenderer>();
+		//DontDestroyOnLoad(gameObject); //testing
 	}
 
 	// Use this for initialization
@@ -42,6 +43,7 @@ public class PickupWeapon : MonoBehaviour {
 				floaty_sr.sprite = gun_sprite;
 				break;
 		}	
+		//DontDestroyOnLoad(gameObject); //testing
 	}
 
 

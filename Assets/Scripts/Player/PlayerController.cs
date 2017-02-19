@@ -64,13 +64,14 @@ public class PlayerController : MonoBehaviour {
 			Debug.Log("Updater Isn't configured correctly.");
 		}
 		SetWeapon<DaggerWeapon>();
+		//DontDestroyOnLoad(gameObject); //testing
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		Dirs dir = Dirs.NULL;
-
+		DontDestroyOnLoad(gameObject); //testing
 
 		// // TEST CODE
 		// if(Input.GetKeyDown(KeyCode.D)) {
@@ -264,7 +265,13 @@ public class PlayerController : MonoBehaviour {
 		{
 			if (obj.GetComponent<StairController>().IsUnlocked())
 			{
+				//object.DontDestroyOnLoad(transform.gameObject);
+				//DontDestroyOnLoad(PlayerHealthController.gameObject);
+				//PlayerPrefs.SetInt(
+				Application.LoadLevel("Level2");
+
 				//@Molly: go to the next scene
+				//Application.LoadLevel("Level 2");   
 			}
 		}
 	}

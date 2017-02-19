@@ -20,9 +20,11 @@ public class PlayerHealthController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
 	{
+		//DontDestroyOnLoad(transform.gameObject);//testing
 		max_health = STARTING_HEALTH + (STARTING_HEALTH % 2); // Make max divisible by 2. 
 		health = STARTING_HEALTH;
 		eac = GetComponent<EntityAudioController>();
+		DontDestroyOnLoad(gameObject); //testing
 	}
 
 	void Start() 
@@ -74,6 +76,7 @@ public class PlayerHealthController : MonoBehaviour {
 			obj.transform.SetParent(HeartsContainer.transform, false); // Parent it to UI
 			obj.transform.position = HeartsContainer.transform.position
 										 + new Vector3((float)(-heartOffset * i), 0f, 0f);
+			
 		}
 	}
 
@@ -81,5 +84,7 @@ public class PlayerHealthController : MonoBehaviour {
 	{
 		eac.PlayDie();
 		// LOSE THE GAME HERE.
+		Application.LoadLevel("DeathScence");
 	}
+
 }

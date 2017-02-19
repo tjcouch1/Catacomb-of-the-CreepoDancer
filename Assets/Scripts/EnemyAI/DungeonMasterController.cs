@@ -23,6 +23,8 @@ public class DungeonMasterController : MonoBehaviour {
 
 	EnemyComponent ec;
 
+	float range = 5f;
+
 	// Utility GridMovement component
 	GridMovement gm;
 
@@ -67,7 +69,7 @@ public class DungeonMasterController : MonoBehaviour {
 			if (distToPlayer.magnitude < maxDist)
 			if (distToPlayer.magnitude > .5)
 			{
-				if (Mathf.Abs(distToPlayer.x) >= Mathf.Abs(distToPlayer.y))
+				if (Mathf.Abs(distToPlayer.x) >= Mathf.Abs(distToPlayer.y * 3))
 				{
 					if (distToPlayer.x >= 0)
 						dir = Dirs.RIGHT;
@@ -121,7 +123,7 @@ public class DungeonMasterController : MonoBehaviour {
 	// 
 	bool SubAttack()
 	{
-		attacked = ec.Attack(GridMovement.DirTable[dir]); 
+		attacked = ec.AttackShoot(dir, range); 
 		return attacked;	
 	}
 }

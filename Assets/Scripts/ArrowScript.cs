@@ -6,6 +6,8 @@ public class ArrowScript : MonoBehaviour {
 
 	int damage = 1;
 
+	string lMask = "Enemies";
+
 	// Use this for initialization
 	// void Start () {
 		
@@ -16,15 +18,35 @@ public class ArrowScript : MonoBehaviour {
 		// 
 	// }
 
-	void OnTriggerEnter2D(Collider2D other) 
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		GameObject obj = other.gameObject;
 
-		if(obj.layer == LayerMask.NameToLayer("Enemies")) {
-			obj.GetComponent<EnemyComponent>().Hit(damage);
-		}	
+		Debug.Log(obj.layer + " " + lMask + " " + LayerMask.NameToLayer(lMask));
 
-		Destroy(gameObject);
+		if(obj.layer == LayerMask.NameToLayer(lMask)) 
+		{
+			if (lMask == "Enemies")
+			{
+				obj.GetComponent<EnemyComponent>().Hit(damage);
+
+				Destroy(gameObject);
+			}
+			else if (lMask == "Player")
+			{
+				PlayerHealthController phc = obj.GetComponent<PlayerHealthController>();
+				if(phc != null) {
+					phc.DealDamage(damage);
+				}
+
+				Destroy(gameObject);
+			}
+		}	
 		// Debug.Log("Arrow hit the thing");
+	}
+
+	public void SetLMask(string s)
+	{
+		lMask = s;
 	}
 }

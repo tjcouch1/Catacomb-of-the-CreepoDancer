@@ -14,9 +14,9 @@ TJ Couch
 - Assets
 	- Prefabs
 		+ Level 1
-			(Design, Enemy placement, and coin-drop calculation)
+			(Design, Enemy placement, and Coin-drop calculation)
 		+ Level 2
-			(Design, Enemy placement, and coin-drop calculation)
+			(Design, Enemy cleanup, and Coin-drop calculation)
 		+ Green Slime
 		+ Blue Slime
 		+ Gold Slime
@@ -33,7 +33,10 @@ TJ Couch
 		+ GoldSlimeController.cs
 		+ CoinComponent.cs
 		+ SkeletonController.cs
+			+ Pathfinding
 		+ DungeonMasterController.cs
+			+ Pathfinding
+			+ Shoot Projectile
 		+ CoinPickupComponent.cs
 		
 	-Visuals
@@ -53,7 +56,7 @@ TJ Couch
 		  + Jump Animation
 		+ Skeleton
 		+ Dungeon Master
-Enemy AI, movement, and combat
+Enemy AI, movement, pathing, and combat
 
 
 Molly Sulcer
@@ -66,15 +69,15 @@ Molly Sulcer
 		+ Story
 		+ Help
 		+ DeathScence
-		+ Level 2 -worked on enemy placement
+		+ Level 2 - Enemy placement
 	-Scripts
 		+ ChangeMusic.cs
 		+ DontDestroy.cs
 		+ LoadOnClick.cs
 		+ UniqueDontDestroy
 		+ ButtonNavigation
-		+ PlayerController (staircase and scene transition)
-		+ StairController
+		+ PlayerController.cs (staircase and scene transition)
+		+ StairController.cs
 		+ PlayerHealthController.cs (Player dies-go to death scence)
 
 

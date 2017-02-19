@@ -6,7 +6,7 @@ using Dirs = GridMovement.Directions;
 
 public class GunWeapon : AbstractWeapon {
 
-	float range = 8f;
+	float range = 5f;
 	float speed = 20f;
 
 	public override bool Attack(Dirs dir) 

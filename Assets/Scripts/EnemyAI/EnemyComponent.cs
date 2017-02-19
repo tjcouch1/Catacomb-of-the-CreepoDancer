@@ -106,4 +106,60 @@ public class EnemyComponent : MonoBehaviour {
 			return false;
 		}
 	}
+
+	public bool AttackShoot(Dirs dir, float dist)
+	{
+		if(!dead){
+			if (dir == Dirs.UP || dir == Dirs.DOWN)
+				return Attack(GridMovement.DirTable[dir]);
+			// Shoot out a ray to check for a collision with the level layer. 
+			RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
+				GridMovement.DirTable[dir], 	// Lookup table (direction)!
+				7f, 								// range
+				LayerMask.GetMask("Player", "Level")); // Only on this layer
+
+			// If hit, check layer
+			if(hit.collider != null) {
+				GameObject obj = hit.collider.gameObject;
+				LayerMask mask = obj.layer;
+
+				// Layer stuff
+				if(mask == LayerMask.NameToLayer("Layer")) {
+					return false;
+				}
+
+				Vector2 vdir = GridMovement.DirTable[dir];
+
+				// Make an arrow.
+				GameObject arrow = Instantiate(Resources.Load("Arrowthing") as GameObject);
+				arrow.GetComponent<Rigidbody2D>().velocity = ((Vector3) vdir) * 20f;//speed
+				arrow.GetComponent<ArrowScript>().SetLMask("Player");
+
+				// Set potision 
+				Transform trans = arrow.transform;
+				trans.position = transform.position;
+
+				// Rotate
+				float angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+
+				// Make a swipe.
+				GameObject swipe = Instantiate(Resources.Load("ArrowSwipe") as GameObject);
+
+				// Set potision 
+				trans = swipe.transform;
+				trans.position = transform.position + ((Vector3)vdir * 1f);	
+
+				// Rotate
+				angle = Mathf.Atan2(vdir.y,vdir.x) * Mathf.Rad2Deg;
+				trans.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			}
+
+			return hit.collider != null;
+		}
+		else {
+			return false;
+		}
+	}
 }

@@ -66,6 +66,7 @@ Molly Sulcer
 		+ Story
 		+ Help
 		+ DeathScence
+		+ Level 2 -worked on enemy placement
 	-Scripts
 		+ ChangeMusic.cs
 		+ DontDestroy.cs
@@ -74,7 +75,7 @@ Molly Sulcer
 		+ ButtonNavigation
 		+ PlayerController (staircase and scene transition)
 		+ StairController
-
+		+ PlayerHealthController.cs (Player dies-go to death scence)
 
 
 

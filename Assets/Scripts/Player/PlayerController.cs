@@ -265,10 +265,11 @@ public class PlayerController : MonoBehaviour {
 		{
 			if (obj.GetComponent<StairController>().IsUnlocked())
 			{
-				//object.DontDestroyOnLoad(transform.gameObject);
-				//DontDestroyOnLoad(PlayerHealthController.gameObject);
+				//DontDestroyOnLoad(gameObject);
+				//DontDestroyOnLoad(LongswordWeapon.gameObject);
 				//PlayerPrefs.SetInt(
 				Application.LoadLevel("Level2");
+				Destroy (gameObject);//added
 
 				//@Molly: go to the next scene
 				//Application.LoadLevel("Level 2");   

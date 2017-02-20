@@ -65,8 +65,8 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		GameObject data = GameObject.FindGameObjectWithTag("GameData");
-		PlayerStateStorage store = data.GetComponent<PlayerStateStorage>();
-		if(store != null) {
+		if(data != null) {
+			PlayerStateStorage store = data.GetComponent<PlayerStateStorage>();
 
 			pcc.AddCoins(store.GetCoins());
 			GetComponent<PlayerHealthController>().SetHealth(store.GetHealth());

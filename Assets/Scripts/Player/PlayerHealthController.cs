@@ -21,15 +21,31 @@ public class PlayerHealthController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () 
 	{
-		//DontDestroyOnLoad(transform.gameObject);//testing
 		max_health = STARTING_HEALTH + (STARTING_HEALTH % 2); // Make max divisible by 2. 
 		health = STARTING_HEALTH;
 		eac = GetComponent<EntityAudioController>();
-		DontDestroyOnLoad(gameObject); //testing
 	}
 
 	void Start() 
 	{	
+		redrawUIHearts();
+	}
+
+	public int GetHealth() {
+		return health;
+	}
+
+	public void SetHealth(int h)
+	{
+		if(h > STARTING_HEALTH) {
+			health = STARTING_HEALTH;
+		}
+		else if(h < 1) {
+			health = 1;
+		}
+		else {
+			health = h;
+		}
 		redrawUIHearts();
 	}
 	

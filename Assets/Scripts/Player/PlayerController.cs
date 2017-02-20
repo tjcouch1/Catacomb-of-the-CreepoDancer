@@ -63,29 +63,53 @@ public class PlayerController : MonoBehaviour {
 		if(smu == null) {
 			Debug.Log("Updater Isn't configured correctly.");
 		}
-		SetWeapon<DaggerWeapon>();
-		//DontDestroyOnLoad(gameObject); //testing
+
+		GameObject data = GameObject.FindGameObjectWithTag("GameData");
+		PlayerStateStorage store = data.GetComponent<PlayerStateStorage>();
+		if(store != null) {
+
+			pcc.AddCoins(store.GetCoins());
+			GetComponent<PlayerHealthController>().SetHealth(store.GetHealth());
+			string w = store.GetWeapon();
+
+			if(w == "dagger") {
+				SetWeapon<DaggerWeapon>();
+			}
+			else if(w == "longsword") {
+				SetWeapon<LongswordWeapon>();
+			}
+			else if(w == "gun") {
+				SetWeapon<GunWeapon>();
+			}
+			else {
+				SetWeapon<DaggerWeapon>();
+			}
+
+			// SetWeapon();
+		}
+		else{
+			SetWeapon<DaggerWeapon>();
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		Dirs dir = Dirs.NULL;
-		DontDestroyOnLoad(gameObject); //testing
 
-		// TEST CODE
-		if(Input.GetKeyDown(KeyCode.D)) {
-			Debug.Log("Equipped dagger!");
-			SetWeapon<DaggerWeapon>();
-		}
-		if(Input.GetKeyDown(KeyCode.S)) {
-			Debug.Log("Equipped Longsword!");
-			SetWeapon<LongswordWeapon>();
-		}
-		if(Input.GetKeyDown(KeyCode.A)) {
-			Debug.Log("Equipped GUN!");
-			SetWeapon<GunWeapon>();
-		}
+		// // TEST CODE
+		// if(Input.GetKeyDown(KeyCode.D)) {
+		// 	Debug.Log("Equipped dagger!");
+		// 	SetWeapon<DaggerWeapon>();
+		// }
+		// if(Input.GetKeyDown(KeyCode.S)) {
+		// 	Debug.Log("Equipped Longsword!");
+		// 	SetWeapon<LongswordWeapon>();
+		// }
+		// if(Input.GetKeyDown(KeyCode.A)) {
+		// 	Debug.Log("Equipped GUN!");
+		// 	SetWeapon<GunWeapon>();
+		// }
 		// if(Input.GetKeyDown(KeyCode.D)) {
 		// 	GetComponent<PlayerHealthController>().DealDamage(1);
 		// }
@@ -261,15 +285,32 @@ public class PlayerController : MonoBehaviour {
 			pickup.GetComponent<CoinPickupComponent>().SetCoins(coins);
 
 		}
-		else if (obj.CompareTag("Stairs"))
-		{
-			if (obj.GetComponent<StairController>().IsUnlocked())
-			{
-				
-				SceneManager.LoadScene ("Level2");
-				Destroy (gameObject);//added
+	}
 
+	public void StoreInfo() {
+		GameObject data = GameObject.FindGameObjectWithTag("GameData");
+		if(data != null) {
+			PlayerStateStorage store = data.GetComponent<PlayerStateStorage>();
+			string ret = "null";
+			System.Type t;
+			if(weapon != null){
+				t = weapon.GetType();
+				if(t == typeof(DaggerWeapon)) {
+					ret = "dagger";
+				}
+				else if(t == typeof(LongswordWeapon)) {
+					ret = "longsword";
+				}
+				else if(t == typeof(GunWeapon)) {
+					ret = "gun";
+				}
 			}
+			int coins = pcc.Coins();
+			int health = GetComponent<PlayerHealthController>().GetHealth();
+
+			Debug.Log("Stored some game info: " + coins + " " + health+ " " + ret);
+
+			store.StoreInfo(coins, ret, health);
 		}
 	}
 

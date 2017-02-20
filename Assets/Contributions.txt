@@ -65,11 +65,12 @@ Molly Sulcer
 	-Prefabs
 		+BackgroundMusic
 	-Scenes
-		+ MainMenu-Audio, Visual, Functions
+		+ MainMenu - Audio, Visual, Functions
 		+ Story
 		+ Help
 		+ DeathScence
 		+ Level 2 - Enemy placement
+		+ Credits
 	-Scripts
 		+ ChangeMusic.cs
 		+ DontDestroy.cs
@@ -152,7 +153,7 @@ External Tools and Assets
 		- Scripts
 			+ Camera2DFollow. Always a good tool for cameras!
 	- Sprites
-		+ All of them. Stolen. From Crypt of the Necrodancer.
+		+ All of them. From Crypt of the Necrodancer.
 			+ Addendum: Except a few. 
 
 

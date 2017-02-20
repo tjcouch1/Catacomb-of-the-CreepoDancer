@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using Dirs = GridMovement.Directions;
 
 [RequireComponent(typeof(EntityAudioController))]
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
-
+	public int level;
 	// Gamd updater
 	public GameObject body;
 	public GameObject head;
@@ -265,14 +266,10 @@ public class PlayerController : MonoBehaviour {
 		{
 			if (obj.GetComponent<StairController>().IsUnlocked())
 			{
-				//DontDestroyOnLoad(gameObject);
-				//DontDestroyOnLoad(LongswordWeapon.gameObject);
-				//PlayerPrefs.SetInt(
-				Application.LoadLevel("Level2");
+				
+				Application.LoadLevel ("Level2");
 				Destroy (gameObject);//added
 
-				//@Molly: go to the next scene
-				//Application.LoadLevel("Level 2");   
 			}
 		}
 	}

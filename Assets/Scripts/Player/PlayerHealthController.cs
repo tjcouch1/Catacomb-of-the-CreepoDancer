@@ -84,8 +84,9 @@ public class PlayerHealthController : MonoBehaviour {
 	{
 		eac.PlayDie();
 		// LOSE THE GAME HERE.
-		Destroy(gameObject); 
+		Destroy(gameObject);
 		Application.LoadLevel("DeathScence");
+
 	}
 
 }

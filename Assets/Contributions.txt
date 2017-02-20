@@ -56,6 +56,11 @@ TJ Couch
 		  + Jump Animation
 		+ Skeleton
 		+ Dungeon Master
+		+ Help Sprites
+		  + PlayerMove.png
+		  + PlayerAttack.png
+		  + PlayerBuy.png
+		  + PlayerStairs.png
 Enemy AI, movement, pathing, and combat
 
 

@@ -13,63 +13,65 @@ TJ Couch
 =======================
 - Assets
 	- Prefabs
+		+ Blue Slime
+		+ CoinDrop
+		+ CoinPickup
+		+ Dungeon Master
+		+ EnemySwipe
+		+ Gold Slime
+		+ Green Slime
 		+ Level 1
 			(Design, Enemy placement, and Coin-drop calculation)
 		+ Level 2
 			(Design, Enemy cleanup, and Coin-drop calculation)
-		+ Green Slime
-		+ Blue Slime
-		+ Gold Slime
-		+ CoinDrop
-		+ EnemySwipe
 		+ Skeleton
-		+ Dungeon Master
-		+ CoinPickup
     -Scripts
-		+ EnemyComponent.cs
-		+ GridSpriteTranslate.cs
-		+ GreenSlimeController.cs
+		+ ArrowScript.cs - colliding with player (Dungeon Master's Arrow)
         + BlueSlimeController.cs
-		+ GoldSlimeController.cs
 		+ CoinComponent.cs
-		+ SkeletonController.cs
-			+ Pathfinding
-		+ DungeonMasterController.cs
-			+ Pathfinding
-			+ Shoot Projectile
 		+ CoinPickupComponent.cs
+		+ DungeonMasterController.cs
+			+ Includes Pathfinding
+			+ Includes Shoot Projectile
+		+ EnemyComponent.cs
+		+ GoldSlimeController.cs
+		+ GreenSlimeController.cs
+		+ GridSpriteTranslate.cs
+		+ SkeletonController.cs
+			+ Includes Pathfinding
 		+ PlayerHelp.cs
-		
 	-Visuals
 		+ Translation between tiles
 			+ Walking
 			+ Jumping
-	
 	-Sprites
-		+ Green Slime
-		+ Blue Slime
-		+ Gold Slime
-		+ Enemy Swipe
-		+ Stepping Stone
-		+ Coins
-		+ Player
-		  + Walk Animation
-		  + Jump Animation
-		+ Skeleton
-		+ Dungeon Master
 		+ Help Sprites
 		  + PlayerMove.png
 		  + PlayerAttack.png
 		  + PlayerBuy.png
 		  + PlayerStairs.png
-Enemy AI, movement, pathing, and combat
+		+ Player
+		  + Walk Animation
+		  + Jump Animation
+		+ Stepping Stone
+	-Animation
+		+ Blue Slime
+		+ Coins
+		+ Dungeon Master
+		+ Enemy Swipe
+		+ Gold Slime
+		+ Green Slime
+		+ Player
+		+ Skeleton
+		+ Stairs
 
 
 Molly Sulcer
 =======================
 -Assets
 	-Prefabs
-		+BackgroundMusic
+		+ BackgroundMusic
+		+ Stairs
 	-Scenes
 		+ MainMenu - Audio, Visual, Functions
 		+ Story
@@ -77,12 +79,13 @@ Molly Sulcer
 		+ DeathScence
 		+ Level 2 - Enemy placement
 		+ Credits
+		+ Win
 	-Scripts
 		+ ChangeMusic.cs
 		+ DontDestroy.cs
 		+ LoadOnClick.cs
-		+ UniqueDontDestroy
-		+ ButtonNavigation
+		+ UniqueDontDestroy.cs
+		+ ButtonNavigation.cs
 		+ PlayerController.cs (staircase and scene transition)
 		+ StairController.cs
 		+ PlayerHealthController.cs (Player dies-go to death scence)
@@ -93,6 +96,7 @@ Clark Chambers
 ======================
 - Assets
 	- Prefabs
+		+ ArrowSwipe
 		+ ArrowThing
 		+ Cash
 		+ Countdown
@@ -102,48 +106,58 @@ Clark Chambers
 		+ Heart Variants (Full, half, empty)
 		+ Level 1
 			(Implementation, including collision and art-ripping)
+		+ Level 2
+			(Implementation, including collision and art-ripping)
 		+ LongswordSwipe
 		+ Main Player
 		+ Multiplier
 		+ Shop
+		+ Shop 1
 		+ ShopWeapon
 		+ ThankYou
 		+ UIDigit
 		+ Weapon
+		+ Stone
 	- Scenes
 		+ Level 1
 			(Level implementation and collision checking)
 		+ Level 2
-			(Level Implementation adn collision checking)
+			(Level Implementation and collision checking)
 	- Scripts
 		+ AbstractWeapon.cs
-		+ ArrowScript.cs
+		+ AnimationAutoDestroy.cs
+		+ ArrowScript.cs - Colliding with enemies (Player's Arrow)
 		+ BasicImageScalar.cs
 		+ CoinAudio.cs
 		+ CoinMultiplier.cs
-		+ GameDigitController.cs
 		+ DaggerWeapon.cs
 		+ DigitController.cs
 		+ EntityAudioController.cs
+		+ GameDigitController.cs
 		+ GridMovement.cs
-		+ GridEnemyState.cs
+		+ GridMovementSubscriber.cs
 		+ GridUpdateSubscriber.cs
 		+ GunWeapon.cs
 		+ LongswordWeapon.cs
 		+ PickupWeapon.cs
-		+ PriceComponent.cs
-		+ PlayerController.cs
 		+ PlayerCoinController.cs
+		+ PlayerController.cs
 		+ PlayerHealthController.cs
+		+ PlayerStateStorage.cs
+		+ PriceComponent.cs
 		+ ShopkeeperComponent.cs
 		+ SimultaneousUpdater.cs
 		+ SinOscelator.cs
 		+ WeaponChanger.cs
 		+ WorldTimer.cs
-
 	- Sprites
 		+ Timeglass/Timebar
 		+ ArrowSprite
+	- Animation
+		+ Arrow Swipe
+		+ Dagger Swipe
+		+ Longsword Swipe
+		+ Player Animation
 
 
 
@@ -161,6 +175,7 @@ External Tools and Assets
 	- Sprites
 		+ All of them. From Crypt of the Necrodancer.
 			+ Addendum: Except a few. 
-
+	- Audio
+		+ All from Crypt of the Necrodancer except some public domain
 
 

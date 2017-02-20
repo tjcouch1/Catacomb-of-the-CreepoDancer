@@ -38,6 +38,7 @@ TJ Couch
 			+ Pathfinding
 			+ Shoot Projectile
 		+ CoinPickupComponent.cs
+		+ PlayerHelp.cs
 		
 	-Visuals
 		+ Translation between tiles

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ArrowScript : MonoBehaviour {
 
-	int damage = 1;
+	public int damage = 1;
 
 	string lMask = "Enemies";
 
 	// Use this for initialization
 	// void Start () {
-		
+		//
 	// }
 	
 	// Update is called once per frame
@@ -21,9 +21,6 @@ public class ArrowScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		GameObject obj = other.gameObject;
-
-		Debug.Log(obj.layer + " " + lMask + " " + LayerMask.NameToLayer(lMask));
-
 		if(obj.layer == LayerMask.NameToLayer(lMask)) 
 		{
 			if (lMask == "Enemies")
@@ -41,8 +38,15 @@ public class ArrowScript : MonoBehaviour {
 
 				Destroy(gameObject);
 			}
-		}	
-		// Debug.Log("Arrow hit the thing");
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		GameObject obj = other.gameObject;
+
+		if (obj.layer == LayerMask.GetMask("Level"))
+			Destroy(gameObject);
 	}
 
 	public void SetLMask(string s)

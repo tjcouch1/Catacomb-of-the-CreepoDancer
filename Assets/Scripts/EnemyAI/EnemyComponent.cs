@@ -107,10 +107,10 @@ public class EnemyComponent : MonoBehaviour {
 		}
 	}
 
-	public bool AttackShoot(Dirs dir, float dist)
+	public bool AttackShoot(Dirs dir, float dist, GameObject player)
 	{
 		if(!dead){
-			if (dir == Dirs.UP || dir == Dirs.DOWN)
+			if (dir == Dirs.UP || dir == Dirs.DOWN || player.transform.position.y != transform.position.y)
 				return Attack(GridMovement.DirTable[dir]);
 			// Shoot out a ray to check for a collision with the level layer. 
 			RaycastHit2D hit = Physics2D.Raycast(transform.position, 			// origin
@@ -134,6 +134,7 @@ public class EnemyComponent : MonoBehaviour {
 				GameObject arrow = Instantiate(Resources.Load("Arrowthing") as GameObject);
 				arrow.GetComponent<Rigidbody2D>().velocity = ((Vector3) vdir) * 20f;//speed
 				arrow.GetComponent<ArrowScript>().SetLMask("Player");
+				arrow.GetComponent<ArrowScript>().damage = 2;
 
 				// Set potision 
 				Transform trans = arrow.transform;

@@ -123,7 +123,7 @@ public class DungeonMasterController : MonoBehaviour {
 	// 
 	bool SubAttack()
 	{
-		attacked = ec.AttackShoot(dir, range); 
+		attacked = ec.AttackShoot(dir, range, player); 
 		return attacked;	
 	}
 }

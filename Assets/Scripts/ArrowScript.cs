@@ -21,6 +21,10 @@ public class ArrowScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		GameObject obj = other.gameObject;
+
+		if (obj.layer == LayerMask.NameToLayer("Level"))
+			Destroy(gameObject);
+		
 		if(obj.layer == LayerMask.NameToLayer(lMask)) 
 		{
 			if (lMask == "Enemies")
@@ -39,14 +43,6 @@ public class ArrowScript : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
-	}
-
-	void OnCollisionEnter2D(Collision2D other)
-	{
-		GameObject obj = other.gameObject;
-
-		if (obj.layer == LayerMask.GetMask("Level"))
-			Destroy(gameObject);
 	}
 
 	public void SetLMask(string s)

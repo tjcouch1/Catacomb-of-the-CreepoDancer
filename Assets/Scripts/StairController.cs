@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StairController : MonoBehaviour {
 
 	bool unlocked = false;
 
+	public string levelString;
 	Animator anim;
 
 	EntityAudioController eac;
@@ -27,6 +29,20 @@ public class StairController : MonoBehaviour {
 			unlocked = true;
 			anim.SetBool("Unlocked", unlocked);
 			eac.PlayHurt();//unlock sound
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) 
+	{
+		GameObject obj = other.gameObject;
+		if (obj.CompareTag("Player"))
+		{
+			if (IsUnlocked())
+			{
+				obj.GetComponent<PlayerController>().StoreInfo();
+				SceneManager.LoadScene (levelString);
+				// Destroy (gameObject);//added
+			}
 		}
 	}
 

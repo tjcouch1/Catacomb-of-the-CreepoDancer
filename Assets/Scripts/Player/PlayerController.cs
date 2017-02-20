@@ -8,7 +8,6 @@ using Dirs = GridMovement.Directions;
 [RequireComponent(typeof(EntityAudioController))]
 [RequireComponent(typeof(GridMovement))]
 public class PlayerController : MonoBehaviour {
-	public int level;
 	// Gamd updater
 	public GameObject body;
 	public GameObject head;
@@ -74,22 +73,22 @@ public class PlayerController : MonoBehaviour {
 		Dirs dir = Dirs.NULL;
 		DontDestroyOnLoad(gameObject); //testing
 
-		// // TEST CODE
+		// TEST CODE
+		if(Input.GetKeyDown(KeyCode.D)) {
+			Debug.Log("Equipped dagger!");
+			SetWeapon<DaggerWeapon>();
+		}
+		if(Input.GetKeyDown(KeyCode.S)) {
+			Debug.Log("Equipped Longsword!");
+			SetWeapon<LongswordWeapon>();
+		}
+		if(Input.GetKeyDown(KeyCode.A)) {
+			Debug.Log("Equipped GUN!");
+			SetWeapon<GunWeapon>();
+		}
 		// if(Input.GetKeyDown(KeyCode.D)) {
-		// 	Debug.Log("Equipped dagger!");
-		// 	SetWeapon<DaggerWeapon>();
+		// 	GetComponent<PlayerHealthController>().DealDamage(1);
 		// }
-		// if(Input.GetKeyDown(KeyCode.S)) {
-		// 	Debug.Log("Equipped Longsword!");
-		// 	SetWeapon<LongswordWeapon>();
-		// }
-		// if(Input.GetKeyDown(KeyCode.A)) {
-		// 	Debug.Log("Equipped GUN!");
-		// 	SetWeapon<GunWeapon>();
-		// }
-		// // if(Input.GetKeyDown(KeyCode.D)) {
-		// // 	GetComponent<PlayerHealthController>().DealDamage(1);
-		// // }
 		if(Input.GetKeyDown(KeyCode.E)) {
 			pcc.AddCoins(20);
 		}
@@ -267,7 +266,7 @@ public class PlayerController : MonoBehaviour {
 			if (obj.GetComponent<StairController>().IsUnlocked())
 			{
 				
-				Application.LoadLevel ("Level2");
+				SceneManager.LoadScene ("Level2");
 				Destroy (gameObject);//added
 
 			}

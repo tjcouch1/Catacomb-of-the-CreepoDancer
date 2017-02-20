@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthController : MonoBehaviour {
 
@@ -85,7 +86,7 @@ public class PlayerHealthController : MonoBehaviour {
 		eac.PlayDie();
 		// LOSE THE GAME HERE.
 		Destroy(gameObject);
-		Application.LoadLevel("DeathScence");
+		SceneManager.LoadScene("DeathScence");
 
 	}
 

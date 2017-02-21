@@ -15,19 +15,19 @@ public class PlayerHealthController : MonoBehaviour {
 	int max_health;
 	int health;
 
-	// Audio Controller for player. 
+	// Audio Controller for player.
 	EntityAudioController eac;
 
 	// Use this for initialization
-	void Awake () 
+	void Awake ()
 	{
-		max_health = STARTING_HEALTH + (STARTING_HEALTH % 2); // Make max divisible by 2. 
+		max_health = STARTING_HEALTH + (STARTING_HEALTH % 2); // Make max divisible by 2.
 		health = STARTING_HEALTH;
 		eac = GetComponent<EntityAudioController>();
 	}
 
-	void Start() 
-	{	
+	void Start()
+	{
 		redrawUIHearts();
 	}
 
@@ -48,8 +48,8 @@ public class PlayerHealthController : MonoBehaviour {
 		}
 		redrawUIHearts();
 	}
-	
-	public void DealDamage(int dmg) 
+
+	public void DealDamage(int dmg)
 	{
 		// Recalculate health and UI
 		health -= dmg;
@@ -67,13 +67,13 @@ public class PlayerHealthController : MonoBehaviour {
 		}
 	}
 
-	void redrawUIHearts() 
+	void redrawUIHearts()
 	{
 		foreach (Transform child in HeartsContainer.transform) {
 			Destroy(child.gameObject);
 		}
 
-		// Create UI elements 
+		// Create UI elements
 		GameObject heart;
 		int offset;
 		for(int i = 0; i < max_health; i += 2) {
@@ -84,7 +84,7 @@ public class PlayerHealthController : MonoBehaviour {
 			else if(offset < 0) { // Triggers if <= -2
 				heart = EMPTY_HEART;
 			}
-			else {				// Triggers if posative. 
+			else {				// Triggers if posative.
 				heart = FULL_HEART;
 			}
 
@@ -92,12 +92,12 @@ public class PlayerHealthController : MonoBehaviour {
 			GameObject obj = Instantiate(heart);
 			obj.transform.SetParent(HeartsContainer.transform, false); // Parent it to UI
 			obj.transform.position = HeartsContainer.transform.position
-										 + new Vector3((float)(-heartOffset * i), 0f, 0f);
-			
+										 + new Vector3((float)(-heartOffset * i * Screen.width / GameObject.FindGameObjectWithTag("Canvas").transform.GetComponent<RectTransform>().rect.width), 0f, 0f);
+
 		}
 	}
 
-	void loseGame() 
+	void loseGame()
 	{
 		eac.PlayDie();
 		// LOSE THE GAME HERE.

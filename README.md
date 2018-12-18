@@ -1,4 +1,4 @@
-# CS347-Project1
+# Catacomb-of-the-CreepoDancer
 Timer-based dungeon crawler RPG
 
 Princess Pamela's evil stepmother Stacy locked Pamela in the dungeon, protected by a Dungeon Master! The community hires a mercenary to defeat the Dungeon Master and save the princess!
